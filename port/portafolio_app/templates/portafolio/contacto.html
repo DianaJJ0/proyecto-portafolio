@@ -1,0 +1,28 @@
+{% extends 'portafolio/base.html' %}
+{% load static %}
+{% block title %}Contacto – Portafolio{% endblock %}
+{% block contenido %}
+  <h1 class="mb-4">Contacto</h1>
+  <p>Me encantaría saber de ti. Puedes escribirme a:</p>
+  <ul>
+    <li>Gmail: <a href="mailto:dianacjj23@gmail.com">dianacjj23@gmail.com</a></li>
+    <li>GitHub: <a href="https://github.com/DianaJJ0" target="_blank">github.com/DianaJJ0</a></li>
+  </ul>
+  <p>O rellena el formulario:</p>
+  <form method="post" action="{% url 'contacto' %}">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="nombre" class="form-label">Nombre</label>
+      <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Escribe tu nombre" required>
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Correo electrónico</label>
+      <input type="email" class="form-control" id="email" name="email" placeholder="Escribe tu correo" required>
+    </div>
+    <div class="mb-3">
+      <label for="mensaje" class="form-label">Mensaje</label>
+      <textarea class="form-control" id="mensaje" name="mensaje" rows="4" placeholder="Escribe tu mensaje" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Enviar</button>
+  </form>
+{% endblock %}
