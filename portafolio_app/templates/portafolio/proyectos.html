@@ -1,0 +1,54 @@
+{% extends 'portafolio/base.html' %}
+{% load static %}
+
+{% block contenido %}
+
+<div class="container text-center py-4">
+    <h1 class="display-4 fw-bold gradient-text mb-3">Proyectos destacables</h1>
+    {# CAMBIO: Se han añadido las clases 'lead' y 'text-muted' para que coincida con la página de habilidades #}
+    <p class="lead text-muted mx-auto">
+        Estos son algunos de mis trabajos, entra a ellos y navega por su interfaz.
+    </p>
+</div>
+
+<div class="container mt-4">
+    <div class="row">
+
+        {% for proyecto in proyectos %}
+        <div class="col-lg-4 col-md-6 mb-5 d-flex align-items-stretch">
+            <div class="project-card">
+                
+                <div class="project-image-container">
+                    <a href="{{ proyecto.link }}" target="_blank">
+                        {% if proyecto.titulo == "Servitech" %}
+                            <img src="{% static 'img/servitech_cover.png' %}" alt="Imagen del proyecto Servitech" class="project-image">
+                        {% else %}
+                            <img src="{{ proyecto.imagen.url }}" alt="Imagen del proyecto {{ proyecto.titulo }}" class="project-image">
+                        {% endif %}
+                    </a>
+                </div>
+
+                <div class="project-content">
+                    <h5 class="project-title">{{ proyecto.titulo }}</h5>
+                    
+                    <div class="project-tags mb-3">
+                        {% for tech in proyecto.tecnologias.all %}
+                            <span class="tag">{{ tech.nombre }}</span>
+                        {% endfor %}
+                    </div>
+
+                    <p class="project-description">{{ proyecto.descripcion }}</p>
+                    
+                    <div class="project-buttons mt-auto">
+                        <a href="{{ proyecto.link }}" target="_blank" class="btn-primary">Ver Proyecto</a>
+                        <a href="{{ proyecto.codigo_fuente }}" target="_blank" class="btn-secondary">Código Fuente</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>                    
+<br><br><br>            
+{% endblock %}

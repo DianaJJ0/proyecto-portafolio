@@ -1,0 +1,70 @@
+{% extends 'portafolio/base.html' %}
+{% load static %}
+
+{% block contenido %}
+<div class="container contact-page py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+
+            <!-- Tarjeta del Formulario -->
+            <div class="card-base contact-card">
+                <div class="card-body">
+                    <h2 class="card-title">✉️ Contacto</h2>
+                    <p class="card-subtitle">¿Tienes alguna pregunta o una propuesta de trabajo? Completa el formulario y me pondré en contacto contigo lo antes posible.</p>
+                    
+                    <form method="post" class="mt-4">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                {{ form.nombre.label_tag }}
+                                {{ form.nombre }}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                {{ form.correo.label_tag }}
+                                {{ form.correo }}
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            {{ form.asunto.label_tag }}
+                            {{ form.asunto }}
+                        </div>
+                        <div class="mb-4">
+                            {{ form.mensaje.label_tag }}
+                            {{ form.mensaje }}
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-lg">Enviar Mensaje</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+<br><br>
+            <!-- Tarjeta de Información de Contacto -->
+            <div class="card-base contact-card">
+                <div class="card-body">
+                    <h2 class="card-title">📍 Información de contacto</h2>
+                    <div class="row mt-4">
+                        <div class="col-md-6 info-item">
+                            <h5>Correo electrónico</h5>
+                            <p>dianacjj23@gmail.com</p> 
+                        </div>
+                        <div class="col-md-6 info-item">
+                            <h5>Teléfono</h5>
+                            <p>+57 3004855792</p> 
+                        </div>
+                        <div class="col-md-6 info-item">
+                            <h5>Ubicación</h5>
+                            <p>Medellín, Colombia</p> 
+                        </div>
+                        <div class="col-md-6 info-item">
+                            <h5>Horario</h5>
+                            <p>Lunes a Viernes, 10:00 AM - 6:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
