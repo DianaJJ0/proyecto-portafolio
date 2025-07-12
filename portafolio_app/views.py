@@ -1,9 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Proyecto
-from .forms import ContactoForm 
+from .forms import ProyectoForm 
+
+
 
 # Create your views here.
-def inicio(request):
+"""def inicio(request):
     return render(request, 'portafolio/inicio.html')
 
 def proyectos(request):
@@ -19,4 +21,41 @@ def contacto(request):
     
     # Se lo pasamos a la plantilla en el diccionario de contexto.
     # La clave 'form' es la que usará la plantilla HTML.
-    return render(request, 'portafolio/contacto.html', {'form': form})
+    return render(request, 'portafolio/contacto.html', {'form': form}) """
+
+#Leer listar todos los proyectos
+def listaProyectos(request):
+    proyectos = Proyecto.objects.all()
+    return render(request, 'portfolio/proyectos.html', {'proyectos': proyectos})
+
+#Crear un nuevo proyecto
+def crearProyecto(request):
+    if request.method == 'POST':
+        form = ProyectoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('listaProyectos')
+    else:
+        form = ProyectoForm()
+    return render(request, 'portfolio/formulario.html', {'form': form})
+
+#Actualizar proyecto
+def editarProyecto(request,pk):
+    proyecto = get_object_or_404(Proyecto, pk=pk)
+    form = ProyectoForm(request.POST or None, instance=proyecto)
+    if form.is_valid():
+        form.save()
+        return redirect('listaProyectos')
+    return render(request, 'portfolio/formulario.html', {'form': form})
+
+#Eliminar proyecto
+def eliminarProyecto(request, pk):
+    proyecto = get_object_or_404(Proyecto, pk=pk)
+    if request.method == 'POST':
+        proyecto.delete()
+        return redirect('listaProyectos')
+    return render(request, 'portfolio/confirmar_eliminar.html', {'proyecto': proyecto})
+
+
+
+

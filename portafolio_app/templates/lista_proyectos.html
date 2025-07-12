@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de proyectos</title>
+</head>
+<body>
+    <h1>Proyectos</h1>
+    <ul>
+    <a href="{% url 'crear proyecto'% }"> crear nuevo proyecto</a>
+    </ul>
+        {% for proyecto in proyectos %}
+            <li>
+                <strong>{{ proyecto.titulo }} </strong> - {{ proyecto.fecha }}<br>
+                {{ proyecto.descripcion }}<br>
+                <a href="{% url 'editar proyecto' proyecto.id %}">Editar</a>
+                <a href="{% url 'eliminar proyecto' proyecto.id %}">eliminar</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+
+
+</body>
+</html>
