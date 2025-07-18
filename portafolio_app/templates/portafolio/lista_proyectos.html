@@ -1,0 +1,25 @@
+{% extends 'portafolio/base.html' %}
+
+{% block contenido %}
+<div class="crud-container">
+    <div class="crud-title">Mis Proyectos</div>
+    <div style="text-align:right;">
+        <a href="{% url 'crear_proyecto' %}" class="crud-btn-primary">Agregar proyecto</a>
+    </div>
+    <ul class="crud-list">
+        {% for proyecto in proyectos %}
+            <li>
+                <div class="crud-item-title">{{ proyecto.titulo }}</div>
+                <div class="crud-item-meta">{{ proyecto.fecha|date:"d/m/Y" }}</div>
+                <div class="crud-item-meta">{{ proyecto.descripcion }}</div>
+                <div class="crud-actions">
+                    <a href="{% url 'editar_proyecto' proyecto.id %}" class="crud-btn-secondary">Editar</a>
+                    <a href="{% url 'eliminar_proyecto' proyecto.id %}" class="crud-btn-secondary">Eliminar</a>
+                </div>
+            </li>
+        {% empty %}
+            <li>No hay proyectos registrados aún.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

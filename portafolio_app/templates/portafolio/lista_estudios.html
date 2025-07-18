@@ -1,0 +1,29 @@
+{% extends 'portafolio/base.html' %}
+
+{% block contenido %}
+<div class="crud-container">
+    <div class="crud-title">Estudios</div>
+    <div style="text-align:right;">
+        <a href="{% url 'crear_estudio' %}" class="crud-btn-primary">Agregar estudio</a>
+    </div>
+    <ul class="crud-list">
+        {% for estudio in estudios %}
+            <li>
+                <div class="crud-item-title">{{ estudio.titulo_obtenido }} <span class="crud-item-meta">en {{ estudio.institucion }}</span></div>
+                <div class="crud-item-meta">
+                    <span>De {{ estudio.fecha_inicio|date:"d/m/Y" }} a {{ estudio.fecha_fin|date:"d/m/Y" if estudio.fecha_fin else "Actual" }}</span>
+                </div>
+                {% if estudio.descripcion %}
+                <div class="crud-item-meta">{{ estudio.descripcion }}</div>
+                {% endif %}
+                <div class="crud-actions">
+                    <a href="{% url 'editar_estudio' estudio.id %}" class="crud-btn-secondary">Editar</a>
+                    <a href="{% url 'eliminar_estudio' estudio.id %}" class="crud-btn-secondary">Eliminar</a>
+                </div>
+            </li>
+        {% empty %}
+            <li>No hay estudios registrados aún.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

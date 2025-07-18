@@ -1,0 +1,17 @@
+{% extends 'portafolio/base.html' %}
+
+{% block contenido %}
+<div class="crud-container">
+    <div class="crud-title">
+        {% if form.instance.pk %}Editar Experiencia{% else %}Agregar Experiencia{% endif %}
+    </div>
+    <form method="post" class="crud-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="crud-form-actions">
+            <button type="submit" class="crud-btn-primary">Guardar</button>
+            <a href="{% url 'lista_experiencia' %}" class="crud-btn-secondary">Volver</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

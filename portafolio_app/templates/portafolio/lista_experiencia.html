@@ -1,0 +1,27 @@
+{% extends 'portafolio/base.html' %}
+
+{% block contenido %}
+<div class="crud-container">
+    <div class="crud-title">Experiencia Laboral</div>
+    <div style="text-align:right;">
+        <a href="{% url 'crear_experiencia' %}" class="crud-btn-primary">Agregar experiencia</a>
+    </div>
+    <ul class="crud-list">
+        {% for exp in experiencia %}
+            <li>
+                <div class="crud-item-title">{{ exp.puesto }} <span class="crud-item-meta">en {{ exp.empresa }}</span></div>
+                <div class="crud-item-meta">
+                    <span>De {{ exp.fecha_inicio|date:"d/m/Y" }} a {{ exp.fecha_fin|date:"d/m/Y" if exp.fecha_fin else "Actual" }}</span>
+                </div>
+                <div class="crud-item-meta">{{ exp.descripcion }}</div>
+                <div class="crud-actions">
+                    <a href="{% url 'editar_experiencia' exp.id %}" class="crud-btn-secondary">Editar</a>
+                    <a href="{% url 'eliminar_experiencia' exp.id %}" class="crud-btn-secondary">Eliminar</a>
+                </div>
+            </li>
+        {% empty %}
+            <li>No hay experiencias registradas aún.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

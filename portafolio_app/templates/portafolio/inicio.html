@@ -1,18 +1,16 @@
 {% extends 'portafolio/base.html' %}
-{% load static %}
 
 {% block contenido %}
-<div class="container d-flex vh-fill-header justify-content-center align-items-center text-center">
-    <div>
-        <h1 class="display-4 fw-bold gradient-text mb-3">
-            Bienvenidos a mi Portafolio 
-        </h1>
-        <p class="text-intro">
-            Hola, este es mi portafolio. Aquí encontrarás información sobre mis proyectos, habilidades y cómo contactarme.
-        </p>
-        <p class="text-intro">
-            Puedes navegar usando el menú para ver mis <a href="{% url 'proyectos' %}" class="link-primary">proyectos</a> o escribirme en la sección de contacto.
-        </p>
+<div class="crud-container">
+    <div class="crud-title">Bienvenido a mi portafolio personal</div>
+    <p style="text-align:center; color: var(--color-text-muted, #ccc); font-size: 1.1rem;">
+        Explora mis proyectos, experiencia laboral, estudios y hobbies usando el menú de navegación.
+    </p>
+    <div style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-top: 2rem;">
+        <a href="{% url 'listaProyectos' %}" class="crud-btn-primary">Proyectos</a>
+        <a href="{% url 'lista_experiencia' %}" class="crud-btn-primary">Experiencia</a>
+        <a href="{% url 'lista_estudios' %}" class="crud-btn-primary">Estudios</a>
+        <a href="{% url 'lista_hobbies' %}" class="crud-btn-primary">Hobbies</a>
     </div>
 </div>
 {% endblock %}
