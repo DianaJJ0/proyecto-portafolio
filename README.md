@@ -1,83 +1,16 @@
 # 🌟 Portafolio Personal - Diana Jiménez
 
-Portafolio web personal desarrollado con Python y Django, que muestra mis proyectos, habilidades y experiencia como Diseñadora Gráfica y Desarrolladora de Software.
+Portafolio web desarrollado con Python y Django para mostrar proyectos, habilidades y experiencia profesional.
 
-## 📋 Descripción
+## 🚀 Instalación rápida en otro PC
 
-Este proyecto es un portafolio web responsive que presenta mi trabajo y habilidades profesionales. Incluye secciones para proyectos destacados, información personal, habilidades técnicas y un formulario de contacto.
-
-## ✨ Características
-
-- **Diseño Responsive**: Adaptable a diferentes dispositivos y tamaños de pantalla
-- **Tema Oscuro**: Interfaz moderna con esquema de colores oscuros
-- **Gestión de Proyectos**: Panel de administración para agregar/editar proyectos
-- **Formulario de Contacto**: Funcional con validación de campos
-- **Animaciones CSS**: Efectos hover y transiciones suaves
-- **Bootstrap Integration**: Framework CSS para diseño responsive
-
-## 🛠️ Tecnologías Utilizadas
-
-- **Backend**: Django 5.2.4
-- **Frontend**: HTML5, CSS3, JavaScript
-- **Framework CSS**: Bootstrap 5.3.3
-- **Iconos**: Bootstrap Icons
-- **Base de Datos**: SQLite (por defecto)
-- **Python**: 3.x
-
-## 📁 Estructura del Proyecto
-
-```
-proyecto-portafolio/
-├── portafolio_app/
-│   ├── migrations/
-│   │   ├── 0001_initial.py
-│   │   ├── 0002_remove_proyecto_url_alter_proyecto_fecha.py
-│   │   ├── 0003_habilidad.py
-│   │   └── __init__.py
-│   ├── templates/
-│   │   └── portafolio/
-│   │       ├── base.html          # Plantilla base
-│   │       ├── inicio.html        # Página de inicio
-│   │       ├── proyectos.html     # Galería de proyectos
-│   │       ├── sobre_mi.html      # Información personal
-│   │       └── contacto.html      # Formulario de contacto
-│   ├── __init__.py
-│   ├── admin.py                   # Configuración del panel admin
-│   ├── apps.py
-│   ├── forms.py                   # Formularios Django
-│   ├── models.py                  # Modelos de base de datos
-│   ├── tests.py
-│   └── views.py                   # Vistas/controladores
-├── static/
-│   ├── css/
-│   │   └── styles.css             # Estilos personalizados
-│   └── img/
-│       └── servitech_cover.png    # Imágenes del proyecto
-├── proyecto_portafolio/
-│   ├── __init__.py
-│   ├── settings.py                # Configuración de Django
-│   ├── urls.py                    # URLs principales
-│   └── wsgi.py
-├── manage.py                      # Comando de gestión Django
-└── README.md                      # Este archivo
-```
-
-## 🚀 Instalación y Configuración
-
-### Prerrequisitos
-
-- Python 3.8 o superior
-- Git
-
-### Paso a Paso
-
-1. **Clonar el repositorio**
+1. **Clona el repositorio**
    ```bash
    git clone <URL_DEL_REPOSITORIO>
    cd proyecto-portafolio
    ```
 
-2. **Crear un entorno virtual**
+2. **Crea y activa un entorno virtual**
    ```bash
    # Windows
    python -m venv venv
@@ -88,94 +21,47 @@ proyecto-portafolio/
    source venv/bin/activate
    ```
 
-3. **Instalar dependencias**
+3. **Instala dependencias**
    ```bash
    pip install django
    ```
 
-4. **Configurar la base de datos**
+4. **Prepara la base de datos**
    ```bash
    python manage.py makemigrations
    python manage.py migrate
    ```
 
-5. **Crear un superusuario (opcional)**
+5. **Crea un usuario administrador**
    ```bash
    python manage.py createsuperuser
    ```
-   Sigue las instrucciones para crear tu usuario administrador.
+   Ingresa usuario, correo y contraseña cuando lo solicite.
 
-6. **Ejecutar el servidor de desarrollo**
+6. **Inicia el servidor**
    ```bash
    python manage.py runserver
    ```
 
-7. **Acceder a la aplicación**
+7. **Accede desde el navegador**
    - Portafolio: http://127.0.0.1:8000/
-   - Panel de administración: http://127.0.0.1:8000/admin/
+   - Panel admin: http://127.0.0.1:8000/admin/
 
-## 📊 Modelos de Base de Datos
+## 🛠️ Panel de administración
 
-### Proyecto
-```python
-- titulo: CharField (máx. 100 caracteres)
-- descripcion: TextField
-- fecha: DateField
-```
+- Ingresa a `/admin/` con el usuario creado.
+- Desde ahí puedes agregar, editar o eliminar proyectos, habilidades, estudios, experiencia y hobbies fácilmente.
 
-### Habilidad
-```python
-- nombre: CharField (máx. 50 caracteres)
-- nivel: CharField con opciones (Básico, Intermedio, Avanzado)
-```
+## 📊 Modelos principales
+
+- **Proyecto**: título, descripción, fecha
+- **Habilidad**: nombre, nivel (Básico, Intermedio, Avanzado)
 
 ## 🎨 Personalización
 
-### Estilos
-Los estilos personalizados se encuentran en `static/css/styles.css`. El archivo está organizado en secciones:
-- Estilos globales y base
-- Componentes reutilizables
-- Estilos específicos por página
-
-### Colores Principales
-- Fondo principal: `#121212`
-- Texto principal: `#ffffff`
-- Texto secundario: `#cccccc`
-- Acento azul: `#007bff`
-- Bordes: `#444`
-
-### Añadir Nuevos Proyectos
-1. Accede al panel de administración: `/admin/`
-2. Ve a la sección "Proyectos"
-3. Haz clic en "Agregar proyecto"
-4. Completa los campos requeridos
-5. Guarda los cambios
-
-## 🔧 Configuraciones Adicionales
-
-### Variables de Entorno (Producción)
-Para despliegue en producción, considera configurar:
-- `SECRET_KEY`
-- `DEBUG = False`
-- `ALLOWED_HOSTS`
-- Configuración de base de datos
-- Configuración de archivos estáticos
-
-### Archivos Estáticos
-```python
-# En settings.py
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / 'static']
-```
-
-## 🤝 Contribuciones
-
-Este es un proyecto personal, pero si tienes sugerencias o encuentras algún error, no dudes en contactarme.
-
-## 📄 Licencia
-
-Este proyecto está desarrollado con fines educativos y de portafolio personal.
+- Edita los estilos en `static/css/styles.css` para cambiar colores y diseño.
+- Las imágenes y recursos están en la carpeta `static/`.
 
 ---
 
-⭐ **¡Gracias por visitar mi portafolio!** ⭐
+⭐ **¡Listo! Ya puedes mostrar tu portafolio y administrar el contenido fácilmente.**

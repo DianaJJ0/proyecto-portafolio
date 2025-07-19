@@ -1,17 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario Proyecto</title>
-</head>
-<body>
-    <h1>Formulario</h1>
+{% extends 'portafolio/base.html' %}
+
+{% block contenido %}
+<div class="crud-form">
+    <h2 class="mb-4" style="color:#fff;">{{ titulo }}</h2>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">  Guardar </button>
+        <div class="mb-3">
+            <label for="id_titulo">Título:</label>
+            {{ form.titulo }}
+        </div>
+        <div class="mb-3">
+            <label for="id_descripcion">Descripción:</label>
+            {{ form.descripcion }}
+        </div>
+        <div class="mb-3">
+            <label for="id_fecha">Fecha:</label>
+            {{ form.fecha }}
+        </div>
+        <div class="crud-form-actions">
+            <button type="submit" class="crud-btn-primary">Guardar</button>
+            <a href="{% url 'listaProyectos' %}" class="crud-btn-secondary">Volver a la lista</a>
+        </div>
     </form>
-    <a href="{% url 'listaProyectos' %}">Volver a la lista</a>
-</body>
-</html>
+</div>
+{% endblock %}

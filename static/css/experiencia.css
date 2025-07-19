@@ -1,0 +1,79 @@
+/* Centra el contenedor principal de experiencia */
+.experiencia-contenedor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Estiliza el título */
+.experiencia-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #fafafa;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 6px #222;
+}
+
+/* Tarjeta experiencia */
+.experiencia-card {
+    background-color: #212529 !important; /* Fondo oscuro */
+    color: #f6f6f6 !important;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.35);
+    border: none;
+    padding: 1.5rem 1.2rem;
+}
+
+/* Puesto y empresa */
+.experiencia-puesto {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #2cbcff;
+}
+
+.experiencia-empresa {
+    font-size: 1rem;
+    color: #bbbbbb;
+    font-weight: 500;
+    margin-bottom: 0.7rem;
+}
+
+/* Fechas */
+.card-fecha {
+    font-size: 1rem;
+    margin-bottom: 0.7rem;
+}
+
+/* Descripción */
+.experiencia-descripcion {
+    font-size: 1rem;
+    color: #e1e1e1;
+    margin-bottom: 1rem;
+}
+
+/* Botones de editar y eliminar */
+.estudios-btn-edit,
+.estudios-btn-delete {
+  color: #0dcaf0;
+  border: 2px solid #0dcaf0;
+  background: none;
+  border-radius: 8px;
+  padding: 0.35rem 1rem;
+  font-size: 1rem;
+  transition: background 0.2s, color 0.2s;
+}
+.estudios-btn-edit:hover,
+.estudios-btn-delete:hover {
+  background: #0dcaf0;
+  color: #181818;
+}
+/* Responsive ajustes si es necesario */
+@media (max-width: 768px) {
+    .experiencia-card {
+        padding: 1rem 0.5rem;
+    }
+    .experiencia-title {
+        font-size: 2rem;
+    }
+}

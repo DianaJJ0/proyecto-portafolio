@@ -1,0 +1,136 @@
+/* ========== ESTUDIOS ========== */
+
+/* Fondo oscuro en toda la sección de estudios */
+body {
+  background: #181818;
+}
+
+/* Container */
+.estudios-container {
+  background: #181818;
+  border-radius: 16px;
+  padding: 2.2rem 1.5rem;
+  margin: 2rem auto;
+  max-width: 900px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.13);
+}
+
+/* Title */
+.estudios-title {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1.6rem;
+}
+
+/* Add Button Section */
+.estudios-agregar {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.estudios-btn-add {
+  color: #0dcaf0;
+  border: 2px solid #0dcaf0;
+  background: none;
+  border-radius: 8px;
+  font-weight: 500;
+  padding: 0.6rem 1.3rem;
+  font-size: 1.08rem;
+  transition: background 0.2s, color 0.2s;
+}
+.estudios-btn-add:hover {
+  background: #0dcaf0;
+  color: #181818;
+}
+
+/* Estudios List */
+.estudios-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+/* Card */
+.estudio-card {
+  background: #202020;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+  border: 1px solid #444;
+  padding: 1.2rem 1.5rem;
+  min-width: 260px;
+  max-width: 350px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Empty State */
+.estudio-empty {
+  text-align: center;
+  color: #bbb;
+  font-style: italic;
+  border-style: dashed;
+}
+
+/* Card Content */
+.estudio-titulo {
+  font-weight: bold;
+  color: #0dcaf0;
+  font-size: 1.1rem;
+}
+.estudio-institucion {
+  font-size: 1rem;
+  color: #fff;
+}
+.estudio-fechas {
+  font-size: 0.95rem;
+  color: #e0e0e0;
+}
+.estudio-descripcion {
+  font-size: 1rem;
+  color: #e0e0e0;
+}
+
+/* Card Actions */
+.estudio-actions {
+  margin-top: 0.8rem;
+  display: flex;
+  gap: 0.5rem;
+}
+.estudios-btn-edit,
+.estudios-btn-delete {
+  color: #0dcaf0;
+  border: 2px solid #0dcaf0;
+  background: none;
+  border-radius: 8px;
+  padding: 0.35rem 1rem;
+  font-size: 1rem;
+  transition: background 0.2s, color 0.2s;
+}
+.estudios-btn-edit:hover,
+.estudios-btn-delete:hover {
+  background: #0dcaf0;
+  color: #181818;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .estudios-container {
+    padding: 1.1rem 0.3rem;
+    max-width: 99vw;
+  }
+  .estudios-title {
+    font-size: 1.25rem;
+  }
+  .estudio-card {
+    padding: 0.7rem 0.5rem;
+    min-width: 95vw;
+    max-width: 99vw;
+  }
+  .estudios-list {
+    gap: 1rem;
+  }
+}

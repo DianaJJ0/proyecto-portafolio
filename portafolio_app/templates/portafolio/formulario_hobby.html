@@ -1,16 +1,21 @@
 {% extends 'portafolio/base.html' %}
 
 {% block contenido %}
-<div class="crud-container">
-    <div class="crud-title">
-        {% if form.instance.pk %}Editar Hobby{% else %}Agregar Hobby{% endif %}
-    </div>
-    <form method="post" class="crud-form">
+<div class="crud-form">
+    <h2 class="mb-4" style="color:#fff;">{{ titulo }}</h2>
+    <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        <div class="mb-3">
+            <label for="id_nombre">Nombre del hobby:</label>
+            {{ form.nombre }}
+        </div>
+        <div class="mb-3">
+            <label for="id_descripcion">Descripción:</label>
+            {{ form.descripcion }}
+        </div>
         <div class="crud-form-actions">
             <button type="submit" class="crud-btn-primary">Guardar</button>
-            <a href="{% url 'lista_hobbies' %}" class="crud-btn-secondary">Volver</a>
+            <a href="{% url 'lista_hobbies' %}" class="crud-btn-secondary">Volver a la lista</a>
         </div>
     </form>
 </div>

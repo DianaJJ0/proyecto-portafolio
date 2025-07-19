@@ -1,0 +1,128 @@
+/* ========== HOBBIES ========== */
+
+/* Container */
+.hobbies-container {
+  background: #181818;
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  margin: 2rem auto;
+  max-width: 900px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.13);
+}
+
+/* Title */
+.hobbies-title {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1.6rem;
+}
+
+/* Add Button Section */
+.hobbies-agregar {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.hobbies-btn-add {
+  color: #0dcaf0;
+  border: 2px solid #0dcaf0;
+  background: none;
+  border-radius: 8px;
+  font-weight: 500;
+  padding: 0.6rem 1.3rem;
+  font-size: 1.08rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.hobbies-btn-add:hover {
+  background: #0dcaf0;
+  color: #181818;
+}
+
+/* Hobbies List */
+.hobbies-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+/* Hobby Card */
+.hobby-card {
+  background: #232323;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+  border: 1px solid #444;
+  padding: 1.2rem 1.5rem;
+  min-width: 220px;
+  max-width: 320px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Empty State */
+.hobby-empty {
+  text-align: center;
+  color: #bbb;
+  font-style: italic;
+  border-style: dashed;
+}
+
+/* Hobby Card Content */
+.hobby-nombre {
+  font-weight: bold;
+  color: #0dcaf0;
+  font-size: 1.08rem;
+}
+
+.hobby-descripcion {
+  font-size: 0.98rem;
+  color: #e0e0e0;
+}
+
+/* Actions */
+.hobby-actions {
+  margin-top: 0.7rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.hobbies-btn-edit,
+.hobbies-btn-delete {
+  color: #0dcaf0;
+  border: 2px solid #0dcaf0;
+  background: none;
+  border-radius: 8px;
+  padding: 0.35rem 1rem;
+  font-size: 1rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.hobbies-btn-edit:hover,
+.hobbies-btn-delete:hover {
+  background: #0dcaf0;
+  color: #181818;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .hobbies-container {
+    padding: 1.1rem 0.3rem;
+    max-width: 99vw;
+  }
+  .hobbies-title {
+    font-size: 1.25rem;
+  }
+  .hobby-card {
+    padding: 0.7rem 0.5rem;
+    min-width: 95vw;
+    max-width: 99vw;
+  }
+  .hobbies-list {
+    gap: 1rem;
+  }
+}

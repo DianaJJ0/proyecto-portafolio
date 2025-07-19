@@ -2,24 +2,24 @@
 
 {% block contenido %}
 <div class="crud-container">
-    <div class="crud-title">Mis Proyectos</div>
-    <div style="text-align:right;">
-        <a href="{% url 'crear_proyecto' %}" class="crud-btn-primary">Agregar proyecto</a>
+    <h1 class="display-4 fw-bold gradient-text mb-3">Mis Proyectos</h1>
+    <div class="d-flex justify-content-center mb-4 mt-3">
+        <a href="{% url 'crear_proyecto' %}" class="btn-add-project">Agregar proyecto</a>
     </div>
-    <ul class="crud-list">
+    <div class="crud-list d-flex">
         {% for proyecto in proyectos %}
-            <li>
-                <div class="crud-item-title">{{ proyecto.titulo }}</div>
-                <div class="crud-item-meta">{{ proyecto.fecha|date:"d/m/Y" }}</div>
-                <div class="crud-item-meta">{{ proyecto.descripcion }}</div>
-                <div class="crud-actions">
-                    <a href="{% url 'editar_proyecto' proyecto.id %}" class="crud-btn-secondary">Editar</a>
-                    <a href="{% url 'eliminar_proyecto' proyecto.id %}" class="crud-btn-secondary">Eliminar</a>
-                </div>
-            </li>
+        <div class="project-card-horizontal">
+            <a href="#" class="crud-item-title">{{ proyecto.titulo }}</a>
+            <div class="crud-item-meta">{{ proyecto.fecha|date:"d/m/Y" }}</div>
+            <div class="project-description">{{ proyecto.descripcion }}</div>
+            <div class="crud-actions-horizontal mt-3">
+                <a href="{% url 'editar_proyecto' proyecto.id %}" class="btn-sm">Editar</a>
+                <a href="{% url 'eliminar_proyecto' proyecto.id %}" class="btn-sm">Eliminar</a>
+            </div>
+        </div>
         {% empty %}
-            <li>No hay proyectos registrados aún.</li>
+        <div class="text-center text-muted">No hay proyectos registrados.</div>
         {% endfor %}
-    </ul>
+    </div>
 </div>
 {% endblock %}

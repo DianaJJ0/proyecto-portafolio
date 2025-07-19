@@ -1,26 +1,31 @@
 {% extends 'portafolio/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/hobbies.css' %}">
+{% endblock %}
 
 {% block contenido %}
-<div class="crud-container">
-    <div class="crud-title">Hobbies y Pasatiempos</div>
-    <div style="text-align:right;">
-        <a href="{% url 'crear_hobby' %}" class="crud-btn-primary">Agregar hobby</a>
+<div class="hobbies-container">
+    <h1 class="hobbies-title">Hobbies y Pasatiempos</h1>
+    <div class="hobbies-agregar">
+        <a href="{% url 'crear_hobby' %}" class="hobbies-btn-add">Agregar hobby</a>
     </div>
-    <ul class="crud-list">
+    <div class="hobbies-list">
         {% for hobby in hobbies %}
-            <li>
-                <div class="crud-item-title">{{ hobby.nombre }}</div>
+            <div class="hobby-card">
+                <div class="hobby-nombre">{{ hobby.nombre }}</div>
                 {% if hobby.descripcion %}
-                <div class="crud-item-meta">{{ hobby.descripcion }}</div>
+                <div class="hobby-descripcion">{{ hobby.descripcion }}</div>
                 {% endif %}
-                <div class="crud-actions">
-                    <a href="{% url 'editar_hobby' hobby.id %}" class="crud-btn-secondary">Editar</a>
-                    <a href="{% url 'eliminar_hobby' hobby.id %}" class="crud-btn-secondary">Eliminar</a>
+                <div class="hobby-actions">
+                    <a href="{% url 'editar_hobby' hobby.id %}" class="hobbies-btn-edit">Editar</a>
+                    <a href="{% url 'eliminar_hobby' hobby.id %}" class="hobbies-btn-delete">Eliminar</a>
                 </div>
-            </li>
+            </div>
         {% empty %}
-            <li>No hay hobbies registrados aún.</li>
+            <div class="hobby-card hobby-empty">No hay hobbies registrados aún.</div>
         {% endfor %}
-    </ul>
+    </div>
 </div>
 {% endblock %}

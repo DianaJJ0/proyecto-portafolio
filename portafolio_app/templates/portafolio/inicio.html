@@ -1,16 +1,21 @@
 {% extends 'portafolio/base.html' %}
 
 {% block contenido %}
-<div class="crud-container">
-    <div class="crud-title">Bienvenido a mi portafolio personal</div>
-    <p style="text-align:center; color: var(--color-text-muted, #ccc); font-size: 1.1rem;">
-        Explora mis proyectos, experiencia laboral, estudios y hobbies usando el menú de navegación.
+<div class="container py-5 text-center">
+    <h1 class="display-4 fw-bold gradient-text mb-3">Bienvenida a mi Portafolio</h1>
+    <p class="lead text-muted mx-auto">
+        Explora mis proyectos, experiencia, estudios y hobbies usando el menú superior.
     </p>
-    <div style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-top: 2rem;">
-        <a href="{% url 'listaProyectos' %}" class="crud-btn-primary">Proyectos</a>
-        <a href="{% url 'lista_experiencia' %}" class="crud-btn-primary">Experiencia</a>
-        <a href="{% url 'lista_estudios' %}" class="crud-btn-primary">Estudios</a>
-        <a href="{% url 'lista_hobbies' %}" class="crud-btn-primary">Hobbies</a>
+    <div class="row mt-5 justify-content-center">
+        <div class="col-md-3 mb-3">
+            <a href="{% url 'sobre_mi' %}" class="btn btn-outline-info w-100">Sobre mí</a>
+        </div>
+        <div class="col-md-3 mb-3">
+            <a href="{% url 'listaProyectos' %}" class="btn btn-outline-info w-100">Proyectos</a>
+        </div>
+        <div class="col-md-3 mb-3">
+            <a href="{% url 'contacto' %}" class="btn btn-outline-info w-100">Contacto</a>
+        </div>
     </div>
 </div>
 {% endblock %}

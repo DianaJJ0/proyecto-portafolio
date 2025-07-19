@@ -31,6 +31,9 @@ class ProyectoForm(forms.ModelForm):
     class Meta:
         model = Proyecto
         fields = ['titulo', 'descripcion', 'fecha']
+        widgets = {
+            'fecha': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'})
+        }
 
 # =========================
 # FORMULARIO: Experiencia Laboral
@@ -39,6 +42,10 @@ class ExperienciaLaboralForm(forms.ModelForm):
     class Meta:
         model = ExperienciaLaboral
         fields = ['puesto', 'empresa', 'fecha_inicio', 'fecha_fin', 'descripcion']
+        widgets = {
+            'fecha_inicio': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
+            'fecha_fin': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
+        }
 
 # =========================
 # FORMULARIO: Estudio
@@ -47,6 +54,10 @@ class EstudioForm(forms.ModelForm):
     class Meta:
         model = Estudio
         fields = ['institucion', 'titulo_obtenido', 'fecha_inicio', 'fecha_fin', 'descripcion']
+        widgets = {
+            'fecha_inicio': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
+            'fecha_fin': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
+        }
 
 # =========================
 # FORMULARIO: Hobby

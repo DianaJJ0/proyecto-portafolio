@@ -6,12 +6,26 @@ from .forms import ProyectoForm, ExperienciaLaboralForm, EstudioForm, HobbyForm,
 # VISTA: Página de inicio
 # =========================
 def inicio(request):
-    """
-    Vista para la página principal del portafolio.
-    Muestra los accesos rápidos a todas las secciones.
-    """
     return render(request, 'portafolio/inicio.html')
 
+def sobre_mi(request):
+    return render(request, 'portafolio/sobre_mi.html')
+
+def contacto(request):
+    """
+    Vista para la página de contacto.
+    Renderiza la plantilla contacto.html con el formulario de contacto.
+    """
+    if request.method == 'POST':
+        form = ContactoForm(request.POST)
+        if form.is_valid():
+            # Aquí puedes procesar el formulario (enviar email, guardar en BD, etc)
+            # Por ahora solo puedes mostrar un mensaje o redirigir
+            # return redirect('inicio')  # Ejemplo: redirigir al inicio después de enviar
+            pass
+    else:
+        form = ContactoForm()
+    return render(request, 'portafolio/contacto.html', {'form': form})
 # =========================
 # VISTAS CRUD: Proyecto
 # =========================
@@ -187,3 +201,13 @@ def eliminar_hobby(request, pk):
         hobby.delete()
         return redirect('lista_hobbies')
     return render(request, 'portafolio/confirmar_eliminar.html', {'objeto': hobby, 'tipo': 'hobby'})
+
+
+# =========================
+# VISTA: Proyectos destacados
+def proyectos_destacados(request):
+    """
+    Muestra la página de proyectos destacados.
+    """
+    proyectos = Proyecto.objects.all()
+    return render(request, 'portafolio/proyectos.html', {'proyectos': proyectos})

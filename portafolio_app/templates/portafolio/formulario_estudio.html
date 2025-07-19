@@ -1,16 +1,32 @@
 {% extends 'portafolio/base.html' %}
-
 {% block contenido %}
-<div class="crud-container">
-    <div class="crud-title">
-        {% if form.instance.pk %}Editar Estudio{% else %}Agregar Estudio{% endif %}
-    </div>
-    <form method="post" class="crud-form">
+<div class="crud-form">
+    <h2 class="mb-4" style="color:#fff;">{{ titulo }}</h2>
+    <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        <div class="mb-3">
+            <label for="id_institucion">Institución:</label>
+            {{ form.institucion }}
+        </div>
+        <div class="mb-3">
+            <label for="id_titulo_obtenido">Título obtenido:</label>
+            {{ form.titulo_obtenido }}
+        </div>
+        <div class="mb-3">
+            <label for="id_fecha_inicio">Fecha inicio:</label>
+            {{ form.fecha_inicio }}
+        </div>
+        <div class="mb-3">
+            <label for="id_fecha_fin">Fecha fin:</label>
+            {{ form.fecha_fin }}
+        </div>
+        <div class="mb-3">
+            <label for="id_descripcion">Descripción:</label>
+            {{ form.descripcion }}
+        </div>
         <div class="crud-form-actions">
             <button type="submit" class="crud-btn-primary">Guardar</button>
-            <a href="{% url 'lista_estudios' %}" class="crud-btn-secondary">Volver</a>
+            <a href="{% url 'lista_estudios' %}" class="crud-btn-secondary">Volver a la lista</a>
         </div>
     </form>
 </div>
