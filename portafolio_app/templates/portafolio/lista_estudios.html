@@ -2,7 +2,7 @@
 {% block contenido %}
 <!-- Contenedor principal centrado con fondo oscuro -->
 <div class="estudios-container">
-    <h1 class="estudios-title">Estudios</h1>
+    <h1 class="display-4 fw-bold gradient-text text-center mb-5">Estudios</h1>
     <div class="estudios-agregar">
         <a href="{% url 'crear_estudio' %}" class="estudios-btn-add">Agregar estudio</a>
     </div>
@@ -15,11 +15,11 @@
             <div class="estudio-fechas">
                 <span><strong>De:</strong> {{ estudio.fecha_inicio|date:"d/m/Y" }}</span>
                 <span class="ms-2"><strong>Hasta:</strong>
-                {% if estudio.fecha_fin %}
+                    {% if estudio.fecha_fin %}
                     {{ estudio.fecha_fin|date:"d/m/Y" }}
-                {% else %}
+                    {% else %}
                     Actual
-                {% endif %}
+                    {% endif %}
                 </span>
             </div>
             {% if estudio.descripcion %}

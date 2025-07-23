@@ -1,24 +1,23 @@
-
 /* =======================
    Contenedor principal CRUD
    ======================= */
 .crud-container {
-    background-color: var(--color-bg);
-    border-radius: 16px;
-    padding: 2rem 1.5rem;
-    margin: 2rem auto;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.13);
-    max-width: 950px; /* Ampliamos para tarjetas horizontales */
+  background-color: var(--color-bg);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  margin: 2rem auto;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.13);
+  max-width: 950px; /* Ampliamos para tarjetas horizontales */
 }
 
 /* Título principal de la sección CRUD */
 .crud-title {
-    font-size: 2.2rem;
-    font-weight: bold;
-    color: #fff; /* Blanco puro para mejor contraste */
-    margin-bottom: 1.2rem;
-    text-align: center;
-    letter-spacing: 1px;
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #fff; /* Blanco puro para mejor contraste */
+  margin-bottom: 1.2rem;
+  text-align: center;
+  letter-spacing: 1px;
 }
 
 /* =======================
@@ -27,25 +26,25 @@
 
 /* Centra el botón y agrega separación debajo del título */
 .btn-add-project {
-    display: inline-block;
-    min-width: 160px;
-    font-size: 1.05rem;
-    padding: 0.55rem 1.2rem;
-    border-radius: 8px;
-    font-weight: 500;
-    margin-bottom: 1.2rem;
-    margin-top: 0.7rem;
-    color: #0dcaf0;
-    border: 2px solid #0dcaf0;
-    background-color: transparent;
-    transition: background 0.2s, color 0.2s;
-    text-align: center;
+  display: inline-block;
+  min-width: 160px;
+  font-size: 1.05rem;
+  padding: 0.55rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 500;
+  margin-bottom: 1.2rem;
+  margin-top: 0.7rem;
+  color: #0dcaf0;
+  border: 2px solid #0dcaf0;
+  background-color: transparent;
+  transition: background 0.2s, color 0.2s;
+  text-align: center;
 }
 .btn-add-project:hover,
 .btn-add-project:focus {
-    background-color: #0dcaf0;
-    color: #181818;
-    border-color: #0dcaf0;
+  background-color: #0dcaf0;
+  color: #181818;
+  border-color: #0dcaf0;
 }
 
 /* =======================
@@ -54,78 +53,78 @@
 
 /* Contenedor horizontal de tarjetas con espacio entre ellas */
 .crud-list.d-flex {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 2rem;
-    justify-content: center;
-    margin-bottom: 2rem;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin-bottom: 2rem;
 }
 
 /* Tarjeta de proyecto horizontal */
 .project-card-horizontal {
-    min-width: 320px;
-    max-width: 350px;
-    background: #202020;
-    border-radius: 12px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.10);
-    border: 1px solid #444;
-    padding: 1.5rem 1.2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
-    color: #fff;
-    transition: border-color 0.25s, box-shadow 0.25s;
+  min-width: 320px;
+  max-width: 350px;
+  background: #202020;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid #444;
+  padding: 1.5rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  color: #fff;
+  transition: border-color 0.25s, box-shadow 0.25s;
 }
 .project-card-horizontal:hover {
-    border-color: #0dcaf0;
-    box-shadow: 0 4px 20px rgba(13,202,240,0.17);
+  border-color: #0dcaf0;
+  box-shadow: 0 4px 20px rgba(13, 202, 240, 0.17);
 }
 
 /* Título del proyecto en la tarjeta */
 .crud-item-title {
-    color: #0dcaf0;
-    font-weight: bold;
-    font-size: 1.1rem;
-    text-decoration: none;
-    margin-bottom: 0.2rem;
+  color: #0dcaf0;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-decoration: none;
+  margin-bottom: 0.2rem;
 }
 
 /* Meta info del proyecto (fecha) */
 .crud-item-meta {
-    color: #fff;
-    font-size: 0.97rem;
-    margin-bottom: 0.5rem;
+  color: #fff;
+  font-size: 0.97rem;
+  margin-bottom: 0.5rem;
 }
 
 /* Descripción del proyecto */
 .project-description {
-    color: #fff;
-    margin-bottom: 1rem;
-    font-size: 0.98rem;
+  color: #fff;
+  margin-bottom: 1rem;
+  font-size: 0.98rem;
 }
 
 /* Botones pequeños para acciones, alineados en horizontal */
 .crud-actions-horizontal {
-    display: flex;
-    gap: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
 }
 
 /* Botón pequeño para Editar/Eliminar */
 .btn-sm {
-    padding: 0.35rem 0.75rem;
-    font-size: 0.95rem;
-    border-radius: 6px;
-    color: #0dcaf0;
-    border: 2px solid #0dcaf0;
-    background-color: transparent;
-    transition: background 0.2s, color 0.2s;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.95rem;
+  border-radius: 6px;
+  color: #0dcaf0;
+  border: 2px solid #0dcaf0;
+  background-color: transparent;
+  transition: background 0.2s, color 0.2s;
 }
 .btn-sm:hover,
 .btn-sm:focus {
-    background-color: #0dcaf0;
-    color: #181818;
-    border-color: #0dcaf0;
+  background-color: #0dcaf0;
+  color: #181818;
+  border-color: #0dcaf0;
 }
 
 /* =======================
@@ -134,104 +133,109 @@
 
 /* Contenedor visual del formulario, inspirado en el diseño de contacto */
 .crud-form {
-    background: #202020;
-    border: 1px solid #444;
-    border-radius: 14px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    padding: 2rem 2.3rem;
-    max-width: 640px;
-    margin: 2.5rem auto;
-    color: #fff;
+  background: #202020;
+  border: 1px solid #444;
+  border-radius: 14px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  padding: 2rem 2.3rem;
+  max-width: 640px;
+  margin: 2.5rem auto;
+  color: #fff;
+}
+
+/* Añadido: color blanco para títulos de formularios */
+.crud-form h2 {
+  color: #fff;
 }
 
 /* Etiquetas del formulario en blanco y más grandes */
 .crud-form label {
-    font-weight: bold;
-    color: #fff;
-    font-size: 1.08rem;
-    margin-bottom: 0.5rem;
-    display: block;
+  font-weight: bold;
+  color: #fff;
+  font-size: 1.08rem;
+  margin-bottom: 0.5rem;
+  display: block;
 }
 
 /* Inputs, textarea y select con fondo más oscuro y letras blancas */
 .crud-form input,
 .crud-form textarea,
 .crud-form select {
-    background: #232323;
-    color: #fff;
-    border: 1.7px solid #0dcaf0;
-    border-radius: 8px;
-    padding: 0.65rem 1rem;
-    margin-bottom: 1.3rem;
-    width: 100%;
-    font-size: 1.04rem;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    box-shadow: 0 2px 10px rgba(13,202,240,0.05);
+  background: #232323;
+  color: #fff;
+  border: 1.7px solid #0dcaf0;
+  border-radius: 8px;
+  padding: 0.65rem 1rem;
+  margin-bottom: 1.3rem;
+  width: 100%;
+  font-size: 1.04rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 10px rgba(13, 202, 240, 0.05);
 }
 
 .crud-form input:focus,
 .crud-form textarea:focus,
 .crud-form select:focus {
-    border-color: #00c6ff;
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(13,202,240,0.18);
+  border-color: #00c6ff;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(13, 202, 240, 0.18);
 }
 
 /* Botón de guardar en formularios */
 .crud-form .crud-btn-primary {
-    background: linear-gradient(90deg, #007bff 0%, #00c6ff 100%);
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    padding: 0.6rem 1.5rem;
-    font-weight: 500;
-    font-size: 1.08rem;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.2s;
-    margin-right: 0.5rem;
-    margin-top: 0.5rem;
-    display: inline-block;
+  background: linear-gradient(90deg, #007bff 0%, #00c6ff 100%);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.6rem 1.5rem;
+  font-weight: 500;
+  font-size: 1.08rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+  display: inline-block;
 }
 .crud-form .crud-btn-primary:hover {
-    background: linear-gradient(90deg, #0056b3 0%, #007bff 100%);
-    transform: scale(1.04);
+  background: linear-gradient(90deg, #0056b3 0%, #007bff 100%);
+  transform: scale(1.04);
 }
 
 /* Botón secundario (volver, cancelar, etc) en formularios */
 .crud-form .crud-btn-secondary {
-    background: none;
-    color: #fff;
-    border: 1.5px solid #888;
-    border-radius: 6px;
-    padding: 0.6rem 1.5rem;
-    font-size: 1.03rem;
-    cursor: pointer;
-    margin-top: 0.7rem;
-    transition: background 0.2s, color 0.2s, border-color 0.2s;
-    display: inline-block;
+  background: none;
+  color: #fff;
+  border: 1.5px solid #888;
+  border-radius: 6px;
+  padding: 0.6rem 1.5rem;
+  font-size: 1.03rem;
+  cursor: pointer;
+  margin-top: 0.7rem;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  display: inline-block;
 }
 .crud-form .crud-btn-secondary:hover {
-    background: #0dcaf0;
-    color: #181818;
-    border-color: #0dcaf0;
+  background: #0dcaf0;
+  color: #181818;
+  border-color: #0dcaf0;
 }
 
 /* Acciones del formulario alineadas a la derecha */
 .crud-form .crud-form-actions {
-    text-align: right;
-    margin-top: 1.2rem;
+  text-align: right;
+  margin-top: 1.2rem;
 }
 
 /* =======================
    Confirmar eliminación
    ======================= */
 .crud-confirm {
-    text-align: center;
-    color: #fff;
+  text-align: center;
+  color: #fff;
 }
 .crud-confirm strong {
-    color: #0dcaf0;
-    font-size: 1.15rem;
+  color: #0dcaf0;
+  font-size: 1.15rem;
 }
 
 /* =======================
@@ -239,70 +243,71 @@
    ======================= */
 
 /* Garantiza que el footer esté siempre abajo (layout flex en body) */
-html, body {
-    min-height: 100vh;
+html,
+body {
+  min-height: 100vh;
 }
 body {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 main {
-    flex: 1 0 auto;
+  flex: 1 0 auto;
 }
 /* Footer visual y color */
 .footer {
-    background: #181818;
-    color: #bcbcbc;
-    width: 100%;
+  background: #181818;
+  color: #bcbcbc;
+  width: 100%;
 }
 
 /* =======================
    Botones personalizados azul para inicio (si se usan en este contexto)
    ======================= */
 .btn-outline-custom {
-    color: #0dcaf0;
-    border: 2px solid #0dcaf0;
-    background-color: transparent;
-    transition: background 0.2s, color 0.2s;
-    border-radius: 8px;
-    font-weight: 500;
-    padding: 0.75rem 1rem;
+  color: #0dcaf0;
+  border: 2px solid #0dcaf0;
+  background-color: transparent;
+  transition: background 0.2s, color 0.2s;
+  border-radius: 8px;
+  font-weight: 500;
+  padding: 0.75rem 1rem;
 }
 
 .btn-outline-custom:hover,
 .btn-outline-custom:focus {
-    background-color: #0dcaf0;
-    color: #181818;
-    border: 2px solid #0dcaf0;
+  background-color: #0dcaf0;
+  color: #181818;
+  border: 2px solid #0dcaf0;
 }
 
 /* =======================
    Responsive para CRUD horizontal y vertical
    ======================= */
 @media (max-width: 1150px) {
-    .crud-list.d-flex {
-        flex-direction: column;
-        gap: 1.2rem;
-        align-items: center;
-    }
-    .project-card-horizontal {
-        max-width: 98vw;
-    }
+  .crud-list.d-flex {
+    flex-direction: column;
+    gap: 1.2rem;
+    align-items: center;
+  }
+  .project-card-horizontal {
+    max-width: 98vw;
+  }
 }
 @media (max-width: 700px) {
-    .crud-container {
-        padding: 1rem 0.5rem;
-        max-width: 99vw;
-    }
-    .crud-title {
-        font-size: 1.3rem;
-    }
-    .project-card-horizontal {
-        padding: 1rem 0.3rem;
-    }
-    .crud-form {
-        padding: 1.2rem 0.7rem;
-        max-width: 99vw;
-    }
+  .crud-container {
+    padding: 1rem 0.5rem;
+    max-width: 99vw;
+  }
+  .crud-title {
+    font-size: 1.3rem;
+  }
+  .project-card-horizontal {
+    padding: 1rem 0.3rem;
+  }
+  .crud-form {
+    padding: 1.2rem 0.7rem;
+    max-width: 99vw;
+  }
 }

@@ -1,7 +1,7 @@
 {% extends 'portafolio/base.html' %}
 {% block contenido %}
 <div class="container experiencia-contenedor">
-    <h1 class="experiencia-title text-center mt-4 mb-3">Experiencia Laboral</h1>
+    <h1 class="display-4 fw-bold gradient-text text-center mt-5 mb-5">Experiencia Laboral</h1>
     <div class="text-center mb-4">
         <a href="{% url 'crear_experiencia' %}" class="btn btn-primary">Agregar experiencia</a>
     </div>
@@ -16,9 +16,9 @@
                         <span class="fw-bold">De:</span> {{ exp.fecha_inicio|date:"d/m/Y" }}
                         <span class="fw-bold ms-3">Hasta:</span>
                         {% if exp.fecha_fin %}
-                            {{ exp.fecha_fin|date:"d/m/Y" }}
+                        {{ exp.fecha_fin|date:"d/m/Y" }}
                         {% else %}
-                            Actual
+                        Actual
                         {% endif %}
                     </p>
                     <p class="card-text experiencia-descripcion">{{ exp.descripcion }}</p>

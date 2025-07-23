@@ -7,24 +7,24 @@
 
 {% block contenido %}
 <div class="hobbies-container">
-    <h1 class="hobbies-title">Hobbies y Pasatiempos</h1>
+    <h1 class="display-4 fw-bold gradient-text text-center mb-5">Hobbies y Pasatiempos</h1>
     <div class="hobbies-agregar">
         <a href="{% url 'crear_hobby' %}" class="hobbies-btn-add">Agregar hobby</a>
     </div>
     <div class="hobbies-list">
         {% for hobby in hobbies %}
-            <div class="hobby-card">
-                <div class="hobby-nombre">{{ hobby.nombre }}</div>
-                {% if hobby.descripcion %}
-                <div class="hobby-descripcion">{{ hobby.descripcion }}</div>
-                {% endif %}
-                <div class="hobby-actions">
-                    <a href="{% url 'editar_hobby' hobby.id %}" class="hobbies-btn-edit">Editar</a>
-                    <a href="{% url 'eliminar_hobby' hobby.id %}" class="hobbies-btn-delete">Eliminar</a>
-                </div>
+        <div class="hobby-card">
+            <div class="hobby-nombre">{{ hobby.nombre }}</div>
+            {% if hobby.descripcion %}
+            <div class="hobby-descripcion">{{ hobby.descripcion }}</div>
+            {% endif %}
+            <div class="hobby-actions">
+                <a href="{% url 'editar_hobby' hobby.id %}" class="hobbies-btn-edit">Editar</a>
+                <a href="{% url 'eliminar_hobby' hobby.id %}" class="hobbies-btn-delete">Eliminar</a>
             </div>
+        </div>
         {% empty %}
-            <div class="hobby-card hobby-empty">No hay hobbies registrados aún.</div>
+        <div class="hobby-card hobby-empty">No hay hobbies registrados aún.</div>
         {% endfor %}
     </div>
 </div>

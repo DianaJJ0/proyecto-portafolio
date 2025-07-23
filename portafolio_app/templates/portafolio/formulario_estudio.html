@@ -1,7 +1,7 @@
 {% extends 'portafolio/base.html' %}
 {% block contenido %}
 <div class="crud-form">
-    <h2 class="mb-4" style="color:#fff;">{{ titulo }}</h2>
+    <h2 class="mb-4">{{ titulo }}</h2>
     <form method="post">
         {% csrf_token %}
         <div class="mb-3">
