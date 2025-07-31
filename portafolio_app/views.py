@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Proyecto, ExperienciaLaboral, Estudio, Hobby, Habilidad, HabilidadBlanda
-from .forms import ProyectoForm, ExperienciaLaboralForm, EstudioForm, HobbyForm, ContactoForm, HabilidadForm, HabilidadBlandaForm
+from .forms import HabilidadBlandaForm, HabilidadForm, ProyectoForm, ExperienciaLaboralForm, EstudioForm, HobbyForm, ContactoForm
 
 # =========================
 # VISTA: Página de inicio
@@ -8,25 +8,28 @@ from .forms import ProyectoForm, ExperienciaLaboralForm, EstudioForm, HobbyForm,
 def inicio(request):
     return render(request, 'portafolio/inicio.html')
 
+# =========================
+# VISTA: Sobre mí (habilidades técnicas y blandas desde la BD)
+# =========================
 def sobre_mi(request):
-    return render(request, 'portafolio/sobre_mi.html')
+    habilidades_tecnicas = Habilidad.objects.all()
+    habilidades_blandas = HabilidadBlanda.objects.all()
+    return render(request, 'portafolio/sobre_mi.html', {
+        'habilidades_tecnicas': habilidades_tecnicas,
+        'habilidades_blandas': habilidades_blandas,
+    })
 
+# =========================
+# VISTA: Contacto
+# =========================
 def contacto(request):
-    """
-    Vista para la página de contacto.
-    Renderiza la plantilla contacto.html con el formulario de contacto.
-    """
     if request.method == 'POST':
         form = ContactoForm(request.POST)
         if form.is_valid():
-            # Aquí puedes procesar el formulario (enviar email, guardar en BD, etc)
-            # Por ahora solo puedes mostrar un mensaje o redirigir
-            # return redirect('inicio')  # Ejemplo: redirigir al inicio después de enviar
             pass
     else:
         form = ContactoForm()
     return render(request, 'portafolio/contacto.html', {'form': form})
-
 # =========================
 # VISTAS CRUD: Proyecto
 

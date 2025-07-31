@@ -2,7 +2,6 @@ from django.db import models
 
 # =========================
 # MODELO: Proyecto
-# =========================
 class Proyecto(models.Model):
     titulo = models.CharField(max_length=100)
     descripcion = models.TextField()
@@ -14,16 +13,16 @@ class Proyecto(models.Model):
 
 # =========================
 # MODELO: Habilidad Técnica
-# =========================
 class Habilidad(models.Model):
     NIVEL_CHOICES = [
         ('basico', 'Básico'),
         ('intermedio', 'Intermedio'),
         ('avanzado', 'Avanzado'),
     ]
+
     nombre = models.CharField(max_length=50)
     nivel = models.CharField(max_length=20, choices=NIVEL_CHOICES)
-    icono = models.CharField(max_length=50, blank=True, default="")  # icono CSS/HTML opcional
+    icono = models.TextField(help_text="Código HTML para el icono (SVG o <i> de Bootstrap).")
 
     class Meta:
         verbose_name = "Habilidad"
@@ -35,21 +34,20 @@ class Habilidad(models.Model):
 
 # =========================
 # MODELO: Habilidad Blanda
-# =========================
 class HabilidadBlanda(models.Model):
     nombre = models.CharField(max_length=50)
-    icono = models.CharField(max_length=50, blank=True, default="")  # icono CSS/HTML opcional
+    icono = models.TextField(help_text="Código HTML para el icono (SVG o <i> de Bootstrap).")
 
     class Meta:
-        verbose_name = "Habilidad Blanda"
-        verbose_name_plural = "Habilidades Blandas"
+        verbose_name = "Habilidad blanda"
+        verbose_name_plural = "Habilidades blandas"
 
     def __str__(self):
         return self.nombre
 
+
 # =========================
 # MODELO: Experiencia Laboral
-# =========================
 class ExperienciaLaboral(models.Model):
     puesto = models.CharField(max_length=100)
     empresa = models.CharField(max_length=100)
@@ -60,10 +58,8 @@ class ExperienciaLaboral(models.Model):
     def __str__(self):
         return f"{self.puesto} en {self.empresa}"
 
-
 # =========================
 # MODELO: Estudio
-# =========================
 class Estudio(models.Model):
     institucion = models.CharField(max_length=120)
     titulo_obtenido = models.CharField(max_length=120)
@@ -76,7 +72,6 @@ class Estudio(models.Model):
 
 # =========================
 # MODELO: Hobby o Pasatiempo
-# =========================
 class Hobby(models.Model):
     nombre = models.CharField(max_length=100)
     descripcion = models.TextField(blank=True)

@@ -11,19 +11,14 @@
             ¡Hola! Soy Diana Jiménez, una apasionada Diseñadora Gráfica y futura Desarrolladora de Software, con un
             enfoque especial en crear experiencias de usuario (UX/UI) intuitivas y memorables.
             Me encanta aprender y aplicar nuevas tecnologías para resolver problemas creativos.
-            <br>
-            Además, cuento con habilidades blandas como el respeto, la disposición, trabajo en equipo, asertividad,
-            comunicación, liderazgo, ganas de aprender constantemente y disposición a retos.
-            Mi compromiso, actitud positiva y dedicación son siempre un aporte en cualquier equipo de trabajo.
         </p>
     </section>
+    <br><br>
 
-    <!-- =========== SECCIÓN DE HABILIDADES =========== -->
+    <!-- =========== SECCIÓN DE HABILIDADES TÉCNICAS =========== -->
     <section class="skills-section text-center mb-5">
         <h2 class="fw-bold">Habilidades</h2>
-        <p class="text-muted">Estas son algunas de las tecnologías, herramientas y habilidades personales que manejo.
-        </p>
-
+        <p class="text-muted">Estas son algunas de las tecnologías y herramientas que manejo.</p>
         <div class="row mt-4 justify-content-center">
             {% for habilidad in habilidades_tecnicas %}
             <div class="col-lg-2 col-md-4 col-6 mb-4">
@@ -34,16 +29,24 @@
                 </div>
             </div>
             {% endfor %}
+        </div>
+    </section>
+
+    <!-- =========== SECCIÓN DE HABILIDADES BLANDAS =========== -->
+    <section class="skills-section text-center mb-5">
+        <h2 class="fw-bold mt-5">Habilidades Blandas</h2>
+        <p class="text-muted">Estas son algunas de mis habilidades personales y blandas.</p>
+        <div class="row mt-4 justify-content-center">
             {% for habilidad in habilidades_blandas %}
             <div class="col-lg-2 col-md-4 col-6 mb-4">
                 <div class="card-base skill-card">
                     {{ habilidad.icono|safe }}
                     <h5>{{ habilidad.nombre }}</h5>
-                    {# Las blandas NO muestran nivel #}
                 </div>
             </div>
             {% endfor %}
         </div>
     </section>
+
 </div>
 {% endblock %}
