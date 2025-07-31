@@ -5,9 +5,6 @@ from django.urls import path
 from portafolio_app import views  # Importa las vistas definidas en portafolio_app/views.py
 
 urlpatterns = [
-    # Página de inicio
-    path('', views.inicio, name='inicio'),
-
     # Página "Sobre mí"
     path('sobre-mi/', views.sobre_mi, name='sobre_mi'),
 
@@ -38,7 +35,7 @@ urlpatterns = [
     path('hobbies/editar/<int:pk>/', views.editar_hobby, name='editar_hobby'),
     path('hobbies/eliminar/<int:pk>/', views.eliminar_hobby, name='eliminar_hobby'),
 
-      # Habilidades Técnicas CRUD
+    # Habilidades Técnicas CRUD
     path('habilidades/', views.lista_habilidades, name='lista_habilidades'),
     path('habilidades/crear/', views.crear_habilidad, name='crear_habilidad'),
     path('habilidades/editar/<int:pk>/', views.editar_habilidad, name='editar_habilidad'),
@@ -50,7 +47,6 @@ urlpatterns = [
     path('habilidades-blandas/editar/<int:pk>/', views.editar_habilidad_blanda, name='editar_habilidad_blanda'),
     path('habilidades-blandas/eliminar/<int:pk>/', views.eliminar_habilidad_blanda, name='eliminar_habilidad_blanda'),
 ]
-
 # Comentarios clave:
 # - Cada ruta está conectada directamente a una función en portafolio_app/views.py.
 

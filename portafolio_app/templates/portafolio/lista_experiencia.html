@@ -1,34 +1,45 @@
 {% extends 'portafolio/base.html' %}
+{% load static %}
 {% block contenido %}
+
+{# Botón de tres punticos SIEMPRE alineado a la derecha del viewport #}
+<div class="header-options-row">
+    <div class="menu-container">
+        <button class="card-options-btn" title="Opciones" type="button">
+            <i class="bi bi-three-dots-vertical"></i>
+        </button>
+        <div class="card-options-menu">
+            <a href="{% url 'crear_experiencia' %}" class="menu-link-blue">Crear nueva experiencia</a>
+        </div>
+    </div>
+</div>
+
 <div class="container experiencia-contenedor">
     <h1 class="display-4 fw-bold gradient-text text-center mt-5 mb-5">Experiencia Laboral</h1>
-    <div class="text-center mb-4">
-        <a href="{% url 'crear_experiencia' %}" class="btn btn-primary">Agregar experiencia</a>
-    </div>
-    <div class="row justify-content-center">
+    <div class="card-list-grid">
         {% for exp in experiencia %}
-        <div class="col-12 col-md-8 col-lg-6 mb-4 d-flex justify-content-center">
-            <div class="card experiencia-card bg-dark text-light w-100 shadow">
-                <div class="card-body">
-                    <h5 class="card-title experiencia-puesto">{{ exp.puesto }}</h5>
-                    <h6 class="card-subtitle experiencia-empresa mb-2">{{ exp.empresa }}</h6>
-                    <p class="card-fecha mb-2">
-                        <span class="fw-bold">De:</span> {{ exp.fecha_inicio|date:"d/m/Y" }}
-                        <span class="fw-bold ms-3">Hasta:</span>
-                        {% if exp.fecha_fin %}
-                        {{ exp.fecha_fin|date:"d/m/Y" }}
-                        {% else %}
-                        Actual
-                        {% endif %}
-                    </p>
-                    <p class="card-text experiencia-descripcion">{{ exp.descripcion }}</p>
-                    <div class="d-flex justify-content-center gap-2 mt-3">
-                        <!-- Usa el mismo estilo que los botones de estudios/proyectos/hobbies -->
-                        <a href="{% url 'editar_experiencia' exp.id %}" class="estudios-btn-edit">Editar</a>
-                        <a href="{% url 'eliminar_experiencia' exp.id %}" class="estudios-btn-delete">Eliminar</a>
-                    </div>
+        <div class="card-custom">
+            <div class="menu-container">
+                <button class="card-options-btn" title="Opciones" type="button">
+                    <i class="bi bi-three-dots-vertical"></i>
+                </button>
+                <div class="card-options-menu">
+                    <a href="{% url 'editar_experiencia' exp.id %}" class="menu-link-blue">Editar</a>
+                    <a href="{% url 'eliminar_experiencia' exp.id %}" class="menu-link-blue">Eliminar</a>
                 </div>
             </div>
+            <div class="card-title-main">{{ exp.puesto }}</div>
+            <div class="card-title-secondary">{{ exp.empresa }}</div>
+            <div class="card-dates">
+                <span class="fw-bold">De:</span> {{ exp.fecha_inicio|date:"d/m/Y" }}
+                <span class="fw-bold ms-3">Hasta:</span>
+                {% if exp.fecha_fin %}
+                {{ exp.fecha_fin|date:"d/m/Y" }}
+                {% else %}
+                Actual
+                {% endif %}
+            </div>
+            <div class="card-description">{{ exp.descripcion }}</div>
         </div>
         {% empty %}
         <div class="col-12 text-center text-muted">

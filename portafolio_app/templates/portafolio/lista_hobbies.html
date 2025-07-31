@@ -1,30 +1,39 @@
 {% extends 'portafolio/base.html' %}
 {% load static %}
-
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/hobbies.css' %}">
-{% endblock %}
-
 {% block contenido %}
+
+<div class="fab-options-row">
+    <div class="menu-container">
+        <button class="card-options-btn" title="Opciones" type="button">
+            <i class="bi bi-three-dots-vertical"></i>
+        </button>
+        <div class="card-options-menu">
+            <a href="{% url 'crear_hobby' %}" class="menu-link-blue">Crear nuevo hobby</a>
+        </div>
+    </div>
+</div>
+
 <div class="hobbies-container">
     <h1 class="display-4 fw-bold gradient-text text-center mb-5">Hobbies y Pasatiempos</h1>
-    <div class="hobbies-agregar">
-        <a href="{% url 'crear_hobby' %}" class="hobbies-btn-add">Agregar hobby</a>
-    </div>
-    <div class="hobbies-list">
+    <div class="card-list-grid">
         {% for hobby in hobbies %}
-        <div class="hobby-card">
-            <div class="hobby-nombre">{{ hobby.nombre }}</div>
-            {% if hobby.descripcion %}
-            <div class="hobby-descripcion">{{ hobby.descripcion }}</div>
-            {% endif %}
-            <div class="hobby-actions">
-                <a href="{% url 'editar_hobby' hobby.id %}" class="hobbies-btn-edit">Editar</a>
-                <a href="{% url 'eliminar_hobby' hobby.id %}" class="hobbies-btn-delete">Eliminar</a>
+        <div class="card-custom">
+            <div class="menu-container">
+                <button class="card-options-btn" title="Opciones" type="button">
+                    <i class="bi bi-three-dots-vertical"></i>
+                </button>
+                <div class="card-options-menu">
+                    <a href="{% url 'editar_hobby' hobby.id %}" class="menu-link-blue">Editar</a>
+                    <a href="{% url 'eliminar_hobby' hobby.id %}" class="menu-link-blue">Eliminar</a>
+                </div>
+            </div>
+            <div class="card-title-main">{{ hobby.nombre }}</div>
+            <div class="card-description">
+                {% if hobby.descripcion %}{{ hobby.descripcion }}{% endif %}
             </div>
         </div>
         {% empty %}
-        <div class="hobby-card hobby-empty">No hay hobbies registrados aún.</div>
+        <div class="card-custom hobby-empty">No hay hobbies registrados aún.</div>
         {% endfor %}
     </div>
 </div>

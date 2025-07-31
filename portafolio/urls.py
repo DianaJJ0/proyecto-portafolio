@@ -1,9 +1,17 @@
+# Archivo de rutas principal del PROYECTO
+# Carpeta: proyecto-portafolio/proyecto-portafolio/
+
 from django.contrib import admin
-from django.urls import path, include  # Importa 'include' para agregar rutas de la app
+from django.urls import path, include
+from django.views.generic import RedirectView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),  # Panel de administración
+    # Redirige la raíz "/" a la vista 'sobre_mi' definida en portafolio_app.urls
+    path('', RedirectView.as_view(pattern_name='sobre_mi', permanent=False), name='redirect-root'),
 
-    # Incluye todas las rutas definidas en portafolio_app/urls.py en la raíz ('/')
-    path('', include('portafolio_app.urls')),  # Esto permite acceder a todas las URLs de la app directamente, por ejemplo: /estudios/, /hobbies/, etc.
+    # Incluye todas las rutas de la app 'portafolio_app'
+    path('', include('portafolio_app.urls')),
+
+    # Admin de Django
+    path('admin/', admin.site.urls),
 ]

@@ -1,18 +1,35 @@
 {% extends 'portafolio/base.html' %}
+{% load static %}
 {% block contenido %}
-<!-- Contenedor principal centrado con fondo oscuro -->
+
+<div class="fab-options-row">
+    <div class="menu-container">
+        <button class="card-options-btn" title="Opciones" type="button">
+            <i class="bi bi-three-dots-vertical"></i>
+        </button>
+        <div class="card-options-menu">
+            <a href="{% url 'crear_estudio' %}" class="menu-link-blue">Crear nuevo estudio</a>
+        </div>
+    </div>
+</div>
+
 <div class="estudios-container">
     <h1 class="display-4 fw-bold gradient-text text-center mb-5">Estudios</h1>
-    <div class="estudios-agregar">
-        <a href="{% url 'crear_estudio' %}" class="estudios-btn-add">Agregar estudio</a>
-    </div>
-    <div class="estudios-list">
-        <!-- Itera sobre los estudios y muestra cada uno como tarjeta -->
+    <div class="card-list-grid">
         {% for estudio in estudios %}
-        <div class="estudio-card">
-            <div class="estudio-titulo">{{ estudio.titulo_obtenido }}</div>
-            <div class="estudio-institucion">{{ estudio.institucion }}</div>
-            <div class="estudio-fechas">
+        <div class="card-custom">
+            <div class="menu-container">
+                <button class="card-options-btn" title="Opciones" type="button">
+                    <i class="bi bi-three-dots-vertical"></i>
+                </button>
+                <div class="card-options-menu">
+                    <a href="{% url 'editar_estudio' estudio.id %}" class="menu-link-blue">Editar</a>
+                    <a href="{% url 'eliminar_estudio' estudio.id %}" class="menu-link-blue">Eliminar</a>
+                </div>
+            </div>
+            <div class="card-title-main">{{ estudio.titulo_obtenido }}</div>
+            <div class="card-title-secondary">{{ estudio.institucion }}</div>
+            <div class="card-dates">
                 <span><strong>De:</strong> {{ estudio.fecha_inicio|date:"d/m/Y" }}</span>
                 <span class="ms-2"><strong>Hasta:</strong>
                     {% if estudio.fecha_fin %}
@@ -22,12 +39,8 @@
                     {% endif %}
                 </span>
             </div>
-            {% if estudio.descripcion %}
-            <div class="estudio-descripcion">{{ estudio.descripcion }}</div>
-            {% endif %}
-            <div class="estudio-actions">
-                <a href="{% url 'editar_estudio' estudio.id %}" class="estudios-btn-edit">Editar</a>
-                <a href="{% url 'eliminar_estudio' estudio.id %}" class="estudios-btn-delete">Eliminar</a>
+            <div class="card-description">
+                {% if estudio.descripcion %}{{ estudio.descripcion }}{% endif %}
             </div>
         </div>
         {% empty %}

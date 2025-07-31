@@ -1,11 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Proyecto, ExperienciaLaboral, Estudio, Hobby, Habilidad, HabilidadBlanda
+from django.contrib import messages  # Importa messages para feedback
+from .models import Proyecto, ExperienciaLaboral, Estudio, Hobby, Habilidad, HabilidadBlanda, Contacto
 from .forms import HabilidadBlandaForm, HabilidadForm, ProyectoForm, ExperienciaLaboralForm, EstudioForm, HobbyForm, ContactoForm
-
-# =========================
-# VISTA: Página de inicio
-def inicio(request):
-    return render(request, 'portafolio/inicio.html')
 
 # =========================
 # VISTA: Sobre mí (habilidades técnicas y blandas desde la BD)
@@ -303,3 +299,18 @@ def eliminar_habilidad_blanda(request, pk):
         habilidad_blanda.delete()
         return redirect('lista_habilidades_blandas')
     return render(request, 'portafolio/confirmar_eliminar.html', {'objeto': habilidad_blanda, 'tipo': 'habilidad blanda'})
+
+
+
+# =========================
+# VISTA: Contacto
+def contacto(request):
+    if request.method == 'POST':
+        form = ContactoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "¡Tu mensaje ha sido enviado exitosamente!")
+            return redirect('contacto')
+    else:
+        form = ContactoForm()
+    return render(request, 'portafolio/contacto.html', {'form': form})

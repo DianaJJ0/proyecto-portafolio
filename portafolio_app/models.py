@@ -6,10 +6,10 @@ class Proyecto(models.Model):
     titulo = models.CharField(max_length=100)
     descripcion = models.TextField()
     fecha = models.DateField()
+    link_repo = models.URLField("Enlace al repositorio", max_length=250, blank=True, null=True)  # <-- Nuevo campo
 
     def __str__(self):
         return self.titulo
-
 
 # =========================
 # MODELO: Habilidad Técnica
@@ -78,3 +78,21 @@ class Hobby(models.Model):
 
     def __str__(self):
         return self.nombre
+
+
+    # =========================
+# MODELO: Contacto/interesado
+class Contacto(models.Model):
+    nombre = models.CharField(max_length=100)
+    correo = models.EmailField()
+    asunto = models.CharField(max_length=200)
+    mensaje = models.TextField()
+    fecha_envio = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = "Contacto"
+        verbose_name_plural = "Contactos"
+
+    def __str__(self):
+        return f"{self.nombre} - {self.correo} ({self.fecha_envio:%Y-%m-%d %H:%M})"
+

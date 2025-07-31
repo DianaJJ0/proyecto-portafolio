@@ -1,21 +1,43 @@
 {% extends 'portafolio/base.html' %}
-
+{% load static %}
 {% block contenido %}
+
+<!-- Botón de 3 punticos FIJO ESQUINA DERECHA, DEBAJO DEL ENCABEZADO -->
+<div class="fab-options-row">
+    <div class="menu-container">
+        <button class="card-options-btn" title="Opciones" type="button">
+            <i class="bi bi-three-dots-vertical"></i>
+        </button>
+        <div class="card-options-menu">
+            <a href="{% url 'crear_proyecto' %}" class="menu-link-blue">Crear nuevo proyecto</a>
+        </div>
+    </div>
+</div>
+
 <div class="crud-container">
     <h1 class="display-4 fw-bold gradient-text text-center mb-5">Mis Proyectos</h1>
-    <div class="d-flex justify-content-center mb-4 mt-3">
-        <a href="{% url 'crear_proyecto' %}" class="btn-add-project">Agregar proyecto</a>
-    </div>
-    <div class="crud-list d-flex">
+    <div class="card-list-grid">
         {% for proyecto in proyectos %}
-        <div class="project-card-horizontal">
-            <a href="#" class="crud-item-title">{{ proyecto.titulo }}</a>
-            <div class="crud-item-meta">{{ proyecto.fecha|date:"d/m/Y" }}</div>
-            <div class="project-description">{{ proyecto.descripcion }}</div>
-            <div class="crud-actions-horizontal mt-3">
-                <a href="{% url 'editar_proyecto' proyecto.id %}" class="btn-sm">Editar</a>
-                <a href="{% url 'eliminar_proyecto' proyecto.id %}" class="btn-sm">Eliminar</a>
+        <div class="card-custom" style="display: flex; flex-direction: column; height: 100%;">
+            <div class="menu-container">
+                <button class="card-options-btn" title="Opciones" type="button">
+                    <i class="bi bi-three-dots-vertical"></i>
+                </button>
+                <div class="card-options-menu">
+                    <a href="{% url 'editar_proyecto' proyecto.id %}" class="menu-link-blue">Editar</a>
+                    <a href="{% url 'eliminar_proyecto' proyecto.id %}" class="menu-link-blue">Eliminar</a>
+                </div>
             </div>
+            <div class="card-title-main">{{ proyecto.titulo }}</div>
+            <div class="card-title-secondary">{{ proyecto.fecha|date:"d/m/Y" }}</div>
+            <div class="card-description">{{ proyecto.descripcion }}</div>
+            {% if proyecto.link_repo %}
+            <div class="card-repo-btn-container">
+                <a href="{{ proyecto.link_repo }}" target="_blank" rel="noopener" class="card-repo-btn">
+                    Ver repositorio
+                </a>
+            </div>
+            {% endif %}
         </div>
         {% empty %}
         <div class="text-center text-muted">No hay proyectos registrados.</div>

@@ -11,8 +11,21 @@
             <div class="card-base contact-card">
                 <div class="card-body">
                     <h2 class="card-title">✉️ Contacto</h2>
-                    <p class="card-subtitle">¿Tienes alguna pregunta o una propuesta de trabajo? Completa el formulario y me pondré en contacto contigo lo antes posible.</p>
-                    
+                    <p class="card-subtitle">¿Tienes alguna pregunta o una propuesta de trabajo? Completa el formulario
+                        y me pondré en contacto contigo lo antes posible.</p>
+
+                    {# ======= BLOQUE PARA MENSAJES DE ÉXITO O ERROR ======= #}
+                    {% if messages %}
+                    <div class="mb-3">
+                        {% for message in messages %}
+                        <div class="alert alert-success" role="alert">
+                            {{ message }}
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    {# =========== FIN BLOQUE MENSAJES =========== #}
+
                     <form method="post" class="mt-4">
                         {% csrf_token %}
                         <div class="row">
@@ -47,15 +60,15 @@
                     <div class="row mt-4">
                         <div class="col-md-6 info-item">
                             <h5>Correo electrónico</h5>
-                            <p>dianacjj23@gmail.com</p> 
+                            <p>dianacjj23@gmail.com</p>
                         </div>
                         <div class="col-md-6 info-item">
                             <h5>Teléfono</h5>
-                            <p>+57 3004855792</p> 
+                            <p>+57 3004855792</p>
                         </div>
                         <div class="col-md-6 info-item">
                             <h5>Ubicación</h5>
-                            <p>Medellín, Colombia</p> 
+                            <p>Medellín, Colombia</p>
                         </div>
                         <div class="col-md-6 info-item">
                             <h5>Horario</h5>

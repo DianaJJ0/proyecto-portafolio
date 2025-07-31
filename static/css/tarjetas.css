@@ -1,0 +1,219 @@
+/* ============================
+   TARJETAS REUTILIZABLES PARA LISTADOS
+   ============================ */
+
+/* ========== GRID DE TARJETAS ========== */
+.card-list-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 36px 32px;
+    justify-content: center;
+    align-items: stretch; /* Todas las tarjetas de una fila tendrán el mismo alto */
+    margin-top: 2.5rem;
+}
+
+/* ========== TARJETA: MISMO ANCHO Y ALTO PARA TODAS ========== */
+.card-custom {
+    background: #202328;
+    border: 2px solid #2f3a4a;
+    border-radius: 22px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.17);
+    padding: 2rem 1.4rem 1.4rem 1.4rem;
+    width: 350px;      /* ANCHO FIJO (ajusta si lo necesitas) */
+    min-width: 350px;
+    max-width: 350px;
+    height: 350px;     /* ALTO FIJO (ajusta si lo necesitas) */
+    min-height: 350px;
+    max-height: 350px;
+    transition: transform 0.23s, box-shadow 0.23s;
+    position: relative;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    overflow: hidden;  /* Evita que sobresalga algo */
+}
+.card-custom:hover {
+    transform: translateY(-7px) scale(1.02);
+    box-shadow: 0 12px 44px #0095ff19;
+    border-color: #0dcaf0;
+}
+
+/* ========== TEXTOS Y TITULOS ========== */
+.card-title-main {
+    color: #00baff;
+    font-weight: bold;
+    font-size: 1.22rem;
+    margin-bottom: 0.2rem;
+}
+.card-title-secondary {
+    color: #b2c9e6;
+    font-size: 1.06rem;
+    font-weight: 500;
+    margin-bottom: 0.6rem;
+}
+.card-dates {
+    font-size: 1rem;
+    margin-bottom: 0.7rem;
+}
+.card-description {
+    font-size: 1.01rem;
+    color: #e2e2e2;
+    margin-bottom: 1.1rem;
+    /* El texto se corta con ... si es muy largo */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* Lo siguiente permite que el texto ocupe como máximo 5 líneas (ajusta si quieres menos/más líneas) */
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    line-clamp: 5;
+}
+
+/* ========== BOTÓN DE 3 PUNTICOS Y MENÚS ========== */
+.menu-container {
+    position: relative;
+    display: inline-block;
+}
+.card-options-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #0dcaf0;
+    font-size: 1.5rem;
+    padding: 2px 6px;
+    border-radius: 50%;
+    transition: background 0.18s;
+    z-index: 5;
+}
+.card-options-btn:hover,
+.card-options-btn:focus {
+    background: #181d1f;
+    outline: none;
+}
+.card-options-menu {
+    display: none;
+    position: absolute;
+    top: 32px;
+    right: 0;
+    background: #232838;
+    border: 2px solid #0dcaf0;
+    border-radius: 11px;
+    min-width: 140px;
+    box-shadow: 0 10px 30px #0dcaf033;
+    z-index: 20;
+    padding: 0.4rem 0;
+    animation: fadeInScale 0.15s;
+}
+.card-options-menu.show {
+    display: block;
+}
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.97);}
+    to { opacity: 1; transform: scale(1);}
+}
+.card-options-menu a,
+.menu-link-blue {
+    display: block;
+    width: 100%;
+    padding: 0.8rem 1.2rem;
+    color: #0dcaf0;
+    text-decoration: none;
+    background: none;
+    border: none;
+    font-size: 1.08rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 9px;
+    transition: background 0.13s, color 0.13s;
+    text-align: left;
+}
+.card-options-menu a:hover,
+.menu-link-blue:hover {
+    background: #0dcaf0;
+    color: #232838;
+}
+.card-custom .menu-container {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+}
+
+/* ========== BOTÓN DE 3 PUNTICOS FIJO A LA DERECHA DEL VIEWPORT ========== */
+.fab-options-row {
+    position: fixed;
+    top: 24px;
+    right: 32px;
+    z-index: 99;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.fab-options-row .menu-container {
+    position: relative;
+}
+.fab-options-row .card-options-btn {
+    position: static;
+}
+.fab-options-row .card-options-menu {
+    top: 32px;
+    right: 0;
+    min-width: 180px;
+    z-index: 120;
+}
+
+/* ========== BOTÓN "VER REPOSITORIO" SIEMPRE ABAJO Y CENTRADO ========== */
+.card-repo-btn-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: auto;        /* Empuja el botón al fondo de la tarjeta */
+    margin-bottom: 0.2rem;
+}
+.card-repo-btn {
+    font-size: 0.94rem;
+    padding: 6px 18px;
+    border-radius: 8px;
+    border: 1.5px solid #0dcaf0;
+    background: transparent;
+    color: #0dcaf0;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.18s, color 0.18s, border 0.18s;
+    box-shadow: none;
+    outline: none;
+    display: inline-block;
+    text-align: center;
+}
+.card-repo-btn:hover,
+.card-repo-btn:focus {
+    background: #0dcaf0;
+    color: #222c37;
+    border-color: #0dcaf0;
+    text-decoration: none;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 600px) {
+    .card-custom {
+        width: 99vw;
+        min-width: 97vw;
+        max-width: 99vw;
+        height: auto;
+        min-height: 220px;
+        max-height: none;
+        padding: 1.2rem 0.6rem 1.3rem 0.6rem;
+    }
+    .card-repo-btn {
+        font-size: 0.9rem;
+        padding: 4px 9px;
+    }
+    .fab-options-row {
+        top: 10px;
+        right: 8px;
+    }
+    .fab-options-row .card-options-menu {
+        min-width: 140px;
+    }
+}

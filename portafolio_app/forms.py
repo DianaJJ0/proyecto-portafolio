@@ -1,5 +1,5 @@
 from django import forms
-from .models import Proyecto, ExperienciaLaboral, Estudio, Hobby, Habilidad, HabilidadBlanda
+from .models import Proyecto, ExperienciaLaboral, Estudio, Hobby, Habilidad, HabilidadBlanda, Contacto
 
 # =========================
 # FORMULARIO: Contacto
@@ -23,14 +23,16 @@ class ContactoForm(forms.Form):
         label='Mensaje'
     )
 
+
 # =========================
 # FORMULARIO: Proyecto
 class ProyectoForm(forms.ModelForm):
     class Meta:
         model = Proyecto
-        fields = ['titulo', 'descripcion', 'fecha']
+        fields = ['titulo', 'descripcion', 'fecha', 'link_repo']  # <-- Agregado 'link_repo'
         widgets = {
-            'fecha': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'})
+            'fecha': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
+            'link_repo': forms.URLInput(attrs={'placeholder': 'https://github.com/usuario/repositorio', 'class': 'form-control'})
         }
 
 # =========================
@@ -83,4 +85,18 @@ class HabilidadBlandaForm(forms.ModelForm):
         widgets = {
             'nombre': forms.TextInput(attrs={'class': 'form-control'}),
             'icono': forms.Textarea(attrs={'class': 'form-control', 'rows': 2}),
+        }
+
+
+        # =========================
+# FORMULARIO: Contacto
+class ContactoForm(forms.ModelForm):
+    class Meta:
+        model = Contacto
+        fields = ['nombre', 'correo', 'asunto', 'mensaje']
+        widgets = {
+            'nombre': forms.TextInput(attrs={'placeholder': 'Tu nombre completo','class': 'form-control'}),
+            'correo': forms.EmailInput(attrs={'placeholder': 'tu-correo@ejemplo.com','class': 'form-control'}),
+            'asunto': forms.TextInput(attrs={'placeholder': 'Asunto del mensaje','class': 'form-control'}),
+            'mensaje': forms.Textarea(attrs={'placeholder': 'Escribe tu mensaje aquí...','class': 'form-control','rows': 5}),
         }

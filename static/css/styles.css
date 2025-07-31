@@ -61,7 +61,7 @@ input,
 textarea,
 select {
   background-color: #2c2c2c;
-  color: #e0e0e0; /* Gris claro para texto del input */
+  color: #e0e0e0;
   border: 1px solid #444;
   border-radius: 4px;
   padding: 10px;
@@ -125,23 +125,6 @@ select::placeholder {
     border-color: #0dcaf0 !important;
 }
 
-/* Botón outline custom reutilizable */
-.btn-outline-custom {
-  color: #0dcaf0;
-  border: 2px solid #0dcaf0;
-  background-color: transparent;
-  transition: background 0.2s, color 0.2s;
-  border-radius: 8px;
-  font-weight: 500;
-  padding: 0.75rem 1rem;
-}
-.btn-outline-custom:hover,
-.btn-outline-custom:focus {
-  background-color: #0dcaf0;
-  color: #181818;
-  border: 2px solid #0dcaf0;
-}
-
 /* ============================
    Clase Base para Tarjetas reutilizables
    ============================ */
@@ -183,3 +166,5 @@ select::placeholder {
     padding: 1rem 0.5rem;
   }
 }
+
+

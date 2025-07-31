@@ -2,45 +2,80 @@
 {% load static %}
 
 {% block contenido %}
-<div class="container about-page py-5">
+<!-- CONTENEDOR CENTRAL CON MÁRGENES -->
+<div class="about-page-custom container-custom py-5">
 
-    <!-- =========== SECCIÓN DE INTRODUCCIÓN  =========== -->
-    <section class="about-hero text-center mb-5">
-        <h1 class="display-4 fw-bold gradient-text mb-3">Conoce acerca de mí</h1>
-        <p class="lead mt-3 mx-auto wide-text">
-            ¡Hola! Soy Diana Jiménez, una apasionada Diseñadora Gráfica y futura Desarrolladora de Software, con un
-            enfoque especial en crear experiencias de usuario (UX/UI) intuitivas y memorables.
-            Me encanta aprender y aplicar nuevas tecnologías para resolver problemas creativos.
-        </p>
+    <!-- =========== PERFIL =========== -->
+    <section class="profile-hero mb-5 d-flex flex-column flex-md-row align-items-center justify-content-center">
+        <!-- Foto de perfil grande -->
+        <div class="profile-photo-container mb-4 mb-md-0">
+            <img src="{% static 'img/dianaperfil-fondo.png' %}" alt="Foto de Diana Carolina Jiménez"
+                class="profile-photo profile-photo-lg">
+        </div>
+        <!-- Info personal + redes -->
+        <div class="profile-info-container flex-grow-1 d-flex flex-column">
+            <div class="d-flex align-items-center justify-content-between flex-wrap w-100">
+                <div>
+                    <h1 class="profile-title mb-2">
+                        Hola! <span class="highlight-name">Soy Diana Jiménez</span>
+                    </h1>
+                    <div class="profile-role mb-2">
+                        <b>Diseñadora gráfica y estudiante de Desarrollo de Software y UX/UI</b>
+                    </div>
+                    <div class="profile-location mb-2">
+                        <i class="bi bi-geo-alt-fill"></i>
+                        <span class="profile-ubicacion">Antioquia, Medellín</span>
+                    </div>
+                </div>
+                <!-- Redes a la derecha -->
+                <div class="profile-links-right mb-2 mb-md-0">
+                    <a href="https://github.com/DianaJJ0" target="_blank" class="profile-link" title="GitHub">
+                        <i class="bi bi-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/diana-carolina-jimenez-jimenez-930078377/" target="_blank"
+                        class="profile-link ms-3" title="LinkedIn">
+                        <i class="bi bi-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="profile-desc mt-1">
+                Apasionada por la creatividad, el diseño y la tecnología.<br>
+                Me especializo en experiencias visuales, funcionales y humanas.<br>
+                ¡Bienvenido a mi portafolio profesional!
+            </div>
+        </div>
     </section>
-    <br><br>
 
-    <!-- =========== SECCIÓN DE HABILIDADES TÉCNICAS =========== -->
+    <!-- =========== HABILIDADES TÉCNICAS =========== -->
     <section class="skills-section text-center mb-5">
-        <h2 class="fw-bold">Habilidades</h2>
-        <p class="text-muted">Estas son algunas de las tecnologías y herramientas que manejo.</p>
+        <h2 class="fw-bold">Habilidades Técnicas</h2>
+        <p class="text-muted">Tecnologías y herramientas que manejo:</p>
         <div class="row mt-4 justify-content-center">
             {% for habilidad in habilidades_tecnicas %}
             <div class="col-lg-2 col-md-4 col-6 mb-4">
-                <div class="card-base skill-card">
-                    {{ habilidad.icono|safe }}
+                <div class="modern-skill-card skill-card-equal">
+                    <div class="modern-skill-icon">
+                        {{ habilidad.icono|safe }}
+                    </div>
                     <h5>{{ habilidad.nombre }}</h5>
-                    <span class="habilidad-nivel text-info">Nivel: {{ habilidad.get_nivel_display }}</span>
+                    <span class="habilidad-nivel">Nivel: {{ habilidad.get_nivel_display }}</span>
                 </div>
             </div>
             {% endfor %}
         </div>
     </section>
 
-    <!-- =========== SECCIÓN DE HABILIDADES BLANDAS =========== -->
+    <!-- =========== HABILIDADES BLANDAS =========== -->
     <section class="skills-section text-center mb-5">
         <h2 class="fw-bold mt-5">Habilidades Blandas</h2>
-        <p class="text-muted">Estas son algunas de mis habilidades personales y blandas.</p>
+        <p class="text-muted">Habilidades personales y blandas:</p>
         <div class="row mt-4 justify-content-center">
             {% for habilidad in habilidades_blandas %}
             <div class="col-lg-2 col-md-4 col-6 mb-4">
-                <div class="card-base skill-card">
-                    {{ habilidad.icono|safe }}
+                <div class="modern-skill-card skill-card-equal">
+                    <div class="modern-skill-icon">
+                        {{ habilidad.icono|safe }}
+                    </div>
                     <h5>{{ habilidad.nombre }}</h5>
                 </div>
             </div>
