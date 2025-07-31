@@ -11,6 +11,7 @@ class Proyecto(models.Model):
     def __str__(self):
         return self.titulo
 
+
 # =========================
 # MODELO: Habilidad Técnica
 # =========================
@@ -30,6 +31,7 @@ class Habilidad(models.Model):
 
     def __str__(self):
         return f"{self.nombre} ({self.get_nivel_display()})"
+
 
 # =========================
 # MODELO: Habilidad Blanda
@@ -57,6 +59,7 @@ class ExperienciaLaboral(models.Model):
 
     def __str__(self):
         return f"{self.puesto} en {self.empresa}"
+
 
 # =========================
 # MODELO: Estudio
