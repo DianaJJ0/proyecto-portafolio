@@ -1,9 +1,11 @@
 from django.contrib import admin
-from .models import Proyecto, Habilidad,Estudio,ExperienciaLaboral,Hobby # 1. Importa proyecto y Habilidad
+from .models import Proyecto, ExperienciaLaboral, Estudio, Hobby, Habilidad, HabilidadBlanda
 
-# Register your models here.
+# Registro de modelos en el panel de administración de Django
+
 admin.site.register(Proyecto)
-admin.site.register(Habilidad) 
-admin.site.register(Hobby)
+admin.site.register(ExperienciaLaboral)
 admin.site.register(Estudio)
-admin.site.register(ExperienciaLaboral)   
+admin.site.register(Hobby)
+admin.site.register(Habilidad)
+admin.site.register(HabilidadBlanda) 

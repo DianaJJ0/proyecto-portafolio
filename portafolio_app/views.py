@@ -4,13 +4,11 @@ from .forms import HabilidadBlandaForm, HabilidadForm, ProyectoForm, Experiencia
 
 # =========================
 # VISTA: Página de inicio
-# =========================
 def inicio(request):
     return render(request, 'portafolio/inicio.html')
 
 # =========================
 # VISTA: Sobre mí (habilidades técnicas y blandas desde la BD)
-# =========================
 def sobre_mi(request):
     habilidades_tecnicas = Habilidad.objects.all()
     habilidades_blandas = HabilidadBlanda.objects.all()
@@ -21,7 +19,6 @@ def sobre_mi(request):
 
 # =========================
 # VISTA: Contacto
-# =========================
 def contacto(request):
     if request.method == 'POST':
         form = ContactoForm(request.POST)
@@ -30,9 +27,11 @@ def contacto(request):
     else:
         form = ContactoForm()
     return render(request, 'portafolio/contacto.html', {'form': form})
+
 # =========================
 # VISTAS CRUD: Proyecto
 
+# listar proyectos
 def listaProyectos(request):
     """
     Lista todos los proyectos registrados en el portafolio.
@@ -40,6 +39,7 @@ def listaProyectos(request):
     proyectos = Proyecto.objects.all()
     return render(request, 'portafolio/lista_proyectos.html', {'proyectos': proyectos})
 
+# crear proyecto
 def crear_proyecto(request):
     """
     Formulario para crear un nuevo proyecto.
@@ -53,6 +53,7 @@ def crear_proyecto(request):
         form = ProyectoForm()
     return render(request, 'portafolio/formulario.html', {'form': form})
 
+# editar proyecto
 def editar_proyecto(request, pk):
     """
     Formulario para editar un proyecto existente.
@@ -64,6 +65,7 @@ def editar_proyecto(request, pk):
         return redirect('listaProyectos')
     return render(request, 'portafolio/formulario.html', {'form': form})
 
+# eliminar proyecto
 def eliminar_proyecto(request, pk):
     """
     Vista para confirmar y eliminar un proyecto.
@@ -74,6 +76,7 @@ def eliminar_proyecto(request, pk):
         return redirect('listaProyectos')
     return render(request, 'portafolio/confirmar_eliminar.html', {'objeto': proyecto, 'tipo': 'proyecto'})
 
+
 # =========================
 # VISTA: Proyectos destacados
 def proyectos_destacados(request):
@@ -83,9 +86,11 @@ def proyectos_destacados(request):
     proyectos = Proyecto.objects.all()
     return render(request, 'portafolio/proyectos.html', {'proyectos': proyectos})
 
+
 # =========================
 # VISTAS CRUD: Experiencia Laboral
-# =========================
+
+#listar experiencia laboral
 def lista_experiencia(request):
     """
     Lista todas las experiencias laborales registradas.
@@ -93,6 +98,7 @@ def lista_experiencia(request):
     experiencia = ExperienciaLaboral.objects.all()
     return render(request, 'portafolio/lista_experiencia.html', {'experiencia': experiencia})
 
+# crear experiencia
 def crear_experiencia(request):
     """
     Formulario para agregar una nueva experiencia laboral.
@@ -106,6 +112,7 @@ def crear_experiencia(request):
         form = ExperienciaLaboralForm()
     return render(request, 'portafolio/formulario_experiencia.html', {'form': form})
 
+# editar experiencia
 def editar_experiencia(request, pk):
     """
     Formulario para editar una experiencia laboral existente.
@@ -117,6 +124,7 @@ def editar_experiencia(request, pk):
         return redirect('lista_experiencia')
     return render(request, 'portafolio/formulario_experiencia.html', {'form': form})
 
+# eliminar experiencia
 def eliminar_experiencia(request, pk):
     """
     Vista para confirmar y eliminar una experiencia laboral.
@@ -127,9 +135,11 @@ def eliminar_experiencia(request, pk):
         return redirect('lista_experiencia')
     return render(request, 'portafolio/confirmar_eliminar.html', {'objeto': exp, 'tipo': 'experiencia'})
 
+
 # =========================
 # VISTAS CRUD: Estudios
-# =========================
+
+# listar estudios
 def lista_estudios(request):
     """
     Lista todos los estudios registrados.
@@ -137,6 +147,7 @@ def lista_estudios(request):
     estudios = Estudio.objects.all()
     return render(request, 'portafolio/lista_estudios.html', {'estudios': estudios})
 
+# crear estudio
 def crear_estudio(request):
     """
     Formulario para agregar un nuevo estudio.
@@ -150,6 +161,7 @@ def crear_estudio(request):
         form = EstudioForm()
     return render(request, 'portafolio/formulario_estudio.html', {'form': form})
 
+# editar estudio
 def editar_estudio(request, pk):
     """
     Formulario para editar un estudio existente.
@@ -161,6 +173,7 @@ def editar_estudio(request, pk):
         return redirect('lista_estudios')
     return render(request, 'portafolio/formulario_estudio.html', {'form': form})
 
+# eliminar estudio
 def eliminar_estudio(request, pk):
     """
     Vista para confirmar y eliminar un estudio.
@@ -173,7 +186,8 @@ def eliminar_estudio(request, pk):
 
 # =========================
 # VISTAS CRUD: Hobbies
-# =========================
+
+# listar hobbies
 def lista_hobbies(request):
     """
     Lista todos los hobbies registrados.
@@ -181,6 +195,7 @@ def lista_hobbies(request):
     hobbies = Hobby.objects.all()
     return render(request, 'portafolio/lista_hobbies.html', {'hobbies': hobbies})
 
+# crear hobby
 def crear_hobby(request):
     """
     Formulario para agregar un nuevo hobby.
@@ -194,6 +209,7 @@ def crear_hobby(request):
         form = HobbyForm()
     return render(request, 'portafolio/formulario_hobby.html', {'form': form})
 
+# editar hobby
 def editar_hobby(request, pk):
     """
     Formulario para editar un hobby existente.
@@ -205,6 +221,7 @@ def editar_hobby(request, pk):
         return redirect('lista_hobbies')
     return render(request, 'portafolio/formulario_hobby.html', {'form': form})
 
+# eliminar hobby
 def eliminar_hobby(request, pk):
     """
     Vista para confirmar y eliminar un hobby.

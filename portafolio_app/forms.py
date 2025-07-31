@@ -67,16 +67,20 @@ class HobbyForm(forms.ModelForm):
 class HabilidadForm(forms.ModelForm):
     class Meta:
         model = Habilidad
-        fields = ['nombre', 'nivel']
+        fields = ['nombre', 'nivel', 'icono']  # <-- Agregado 'icono'
         widgets = {
+            'nombre': forms.TextInput(attrs={'class': 'form-control'}),
             'nivel': forms.Select(attrs={'class': 'form-control'}),
+            'icono': forms.Textarea(attrs={'class': 'form-control', 'rows': 2}),
         }
 
+# =========================
 # FORMULARIO: Habilidad Blanda
 class HabilidadBlandaForm(forms.ModelForm):
     class Meta:
         model = HabilidadBlanda
         fields = ['nombre', 'icono']
         widgets = {
-            'icono': forms.TextInput(attrs={'class': 'form-control'}),
+            'nombre': forms.TextInput(attrs={'class': 'form-control'}),
+            'icono': forms.Textarea(attrs={'class': 'form-control', 'rows': 2}),
         }
