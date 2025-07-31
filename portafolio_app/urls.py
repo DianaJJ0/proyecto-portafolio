@@ -37,6 +37,18 @@ urlpatterns = [
     path('hobbies/crear/', views.crear_hobby, name='crear_hobby'),
     path('hobbies/editar/<int:pk>/', views.editar_hobby, name='editar_hobby'),
     path('hobbies/eliminar/<int:pk>/', views.eliminar_hobby, name='eliminar_hobby'),
+
+      # Habilidades Técnicas CRUD
+    path('habilidades/', views.lista_habilidades, name='lista_habilidades'),
+    path('habilidades/crear/', views.crear_habilidad, name='crear_habilidad'),
+    path('habilidades/editar/<int:pk>/', views.editar_habilidad, name='editar_habilidad'),
+    path('habilidades/eliminar/<int:pk>/', views.eliminar_habilidad, name='eliminar_habilidad'),
+
+    # Habilidades Blandas CRUD
+    path('habilidades-blandas/', views.lista_habilidades_blandas, name='lista_habilidades_blandas'),
+    path('habilidades-blandas/crear/', views.crear_habilidad_blanda, name='crear_habilidad_blanda'),
+    path('habilidades-blandas/editar/<int:pk>/', views.editar_habilidad_blanda, name='editar_habilidad_blanda'),
+    path('habilidades-blandas/eliminar/<int:pk>/', views.eliminar_habilidad_blanda, name='eliminar_habilidad_blanda'),
 ]
 
 # Comentarios clave:

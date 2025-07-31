@@ -2,34 +2,31 @@
    ESTILOS GLOBALES Y BASE
    ============================ */
 
-/* Establece el alto mínimo de la página y layout flex para el footer abajo */
+/* Layout general y fondo para todo el sitio */
 html, body {
     min-height: 100vh;
     background: #181818;
 }
 
-/* Layout flex vertical: el footer se mantiene abajo aunque el contenido sea corto */
 body {
     display: flex;
     flex-direction: column;
     height: 100vh;
-    /* Color de texto blanco por defecto para todo el sitio */
-    color: #fff;
+    color: #fff; /* Color de texto blanco por defecto para todo el sitio */
 }
 
-/* --- Regla general: todas las tipografías en blanco --- */
+main {
+    flex: 1 0 auto; /* El contenido principal ocupa el espacio restante */
+}
+
+/* --- Tipografía global: todas las tipografías en blanco --- */
 body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, label, span, a, .lead {
   color: #fff;
 }
 
-/* El contenido principal ocupa el espacio restante */
-main {
-    flex: 1 0 auto;
-}
-
-/* Clase para textos atenuados (puedes dejarla en blanco si quieres claridad) */
+/* Clase para textos atenuados */
 .text-muted {
-  color: #fff !important; 
+  color: #fff !important;
 }
 
 /* ============================
@@ -52,16 +49,13 @@ main {
   color: #0dcaf0;
 }
 
-/* --- Formularios --- */
-
-/* Labels en blanco */
+/* --- Formularios base --- */
 .form-label {
   margin-bottom: 0.5rem;
   font-weight: bold;
   color: #fff;
 }
 
-/* Inputs, textarea, select: texto gris claro (#e0e0e0) */
 .form-control,
 input,
 textarea,
@@ -73,7 +67,6 @@ select {
   padding: 10px;
 }
 
-/* Placeholder: gris más suave (#bdbdbd) */
 .form-control::placeholder,
 input::placeholder,
 textarea::placeholder,
@@ -81,7 +74,7 @@ select::placeholder {
   color: #bdbdbd;
 }
 
-/* --- Botones principales --- */
+/* --- Botones generales --- */
 .btn-primary {
   background-color: #007bff;
   color: #fff;
@@ -96,7 +89,6 @@ select::placeholder {
   background-color: #0056b3;
 }
 
-/* --- Botones secundarios --- */
 .btn-secondary {
   background-color: transparent;
   color: #fff;
@@ -115,9 +107,9 @@ select::placeholder {
   border-color: #777;
 }
 
-/*  para TODOS los botones outline-info */
+/* Botones outline-info reutilizables */
 .btn-outline-info {
-    color: #0dcaf0 !important;         /* Azul brillante para texto y borde */
+    color: #0dcaf0 !important;
     border-color: #0dcaf0 !important;
     background-color: transparent !important;
     border-width: 2px;
@@ -126,8 +118,6 @@ select::placeholder {
     transition: background 0.2s, color 0.2s;
     padding: 0.75rem 1rem;
 }
-
-/* Al pasar el mouse, el fondo se llena de azul y el texto queda oscuro */
 .btn-outline-info:hover,
 .btn-outline-info:focus {
     background-color: #0dcaf0 !important;
@@ -135,8 +125,25 @@ select::placeholder {
     border-color: #0dcaf0 !important;
 }
 
+/* Botón outline custom reutilizable */
+.btn-outline-custom {
+  color: #0dcaf0;
+  border: 2px solid #0dcaf0;
+  background-color: transparent;
+  transition: background 0.2s, color 0.2s;
+  border-radius: 8px;
+  font-weight: 500;
+  padding: 0.75rem 1rem;
+}
+.btn-outline-custom:hover,
+.btn-outline-custom:focus {
+  background-color: #0dcaf0;
+  color: #181818;
+  border: 2px solid #0dcaf0;
+}
+
 /* ============================
-   Clase Base para Contenedores tipo "Tarjeta"
+   Clase Base para Tarjetas reutilizables
    ============================ */
 .card-base {
   background-color: #1e1e1e;
@@ -146,7 +153,6 @@ select::placeholder {
   padding: 2rem;
   transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
 }
-
 .card-base:hover {
   transform: translateY(-8px);
   border-color: #007bff;
@@ -154,222 +160,26 @@ select::placeholder {
 }
 
 /* ============================
-   ESTILOS ESPECÍFICOS POR PÁGINA
+   FOOTER: Estilos globales
    ============================ */
-
-/* --- Página de Inicio --- */
-.vh-fill-header {
-  min-height: calc(100vh - 73px);
-}
-
-.gradient-text {
-  background: linear-gradient(200deg, #001b75, #00b7ff);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-/* --- Página "Sobre Mí" --- */
-.about-hero .lead,
-.experience-section .lead {
-  color: #fff;
-  font-size: 1.1rem;
-  line-height: 1.7;
-}
-
-.wide-text {
-  max-width: 950px;
-}
-
-.skills-section h2,
-.experience-section h2 {
-  margin-bottom: 1rem;
-}
-
-.skill-card {
-  padding: 1.5rem 1rem;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.skill-card i {
-  font-size: 2.5rem;
-  color: #007bff;
-  margin-bottom: 1rem;
-}
-
-.skill-card svg {
-  width: 2.5rem;
-  height: 2.5rem;
-  fill: #007bff;
-  margin-bottom: 1rem;
-}
-
-.skill-card h5 {
-  margin: 0;
-  font-size: 0.9rem;
-  color: #fff;
-  font-weight: bold;
-}
-
-.experience-section {
-  padding: 2.5rem;
-}
-
-/* --- Página de Proyectos --- */
-.project-card {
-  position: relative;
-  width: 100%;
-  background-color: #1e1e1e;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid #333;
-  display: flex;
-  flex-direction: column;
-  transition: all 0.3s ease;
-  padding: 0;
-  box-shadow: none;
-}
-
-.project-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 12px;
-  background: linear-gradient(165deg, transparent 40%, #007bff, #00c6ff);
-  z-index: 0;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.project-card:hover {
-  transform: none;
-  box-shadow: none;
-}
-
-.project-card:hover::before {
-  opacity: 1;
-}
-
-.project-image-container,
-.project-content {
-  position: relative;
-  z-index: 2;
-  background-color: #1e1e1e;
-}
-
-.project-image-container {
-  aspect-ratio: 16 / 9;
-  border-bottom: 1px solid #333;
-}
-
-.project-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s ease;
-}
-
-.project-card:hover .project-image {
-  transform: scale(1.05);
-}
-
-.project-content {
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  border-radius: 0 0 12px 12px;
-}
-
-.project-title {
-  font-size: 1.4rem;
-  font-weight: bold;
-  color: #fff;
-}
-
-.project-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
-}
-
-.tag {
-  background-color: rgba(0, 123, 255, 0.1);
-  color: #00aaff;
-  padding: 0.25rem 0.7rem;
-  border-radius: 99px;
-  font-size: 0.75rem;
-  font-weight: bold;
-  border: 1px solid rgba(0, 123, 255, 0.2);
-}
-
-.project-description {
-  color: #fff;
-  flex-grow: 1;
-  margin-top: 1rem;
-}
-
-.project-buttons {
-  display: flex;
-  gap: 0.75rem;
-  margin-top: 1.5rem;
-}
-
-/* --- Página de Contacto --- */
-.contact-card .card-title {
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  color: #fff;
-}
-
-.contact-card .card-subtitle {
-  color: #fff;
-  margin-bottom: 2rem;
-  text-align: center;
-}
-
-.contact-page .btn-primary {
-  padding: 12px 30px;
-  font-weight: bold;
-  width: 100%;
-  max-width: 300px;
-}
-
-.info-item {
-  margin-bottom: 1.5rem;
-}
-
-.info-item h5 {
-  font-size: 1rem;
-  font-weight: bold;
-  color: #0095ff;
-}
-
-.info-item p {
-  margin: 0;
-  color: #fff;
-}
-
-/* ========= FOOTER ========== */
 .footer {
     background: #181818;
     color: #bcbcbc;
     width: 100%;
 }
-
 .footer .social-icons i {
   font-size: 1.3rem;
   transition: color 0.2s ease;
 }
-
 .footer .social-icons a:hover i {
   color: #fff;
+}
+
+/* ============================
+   RESPONSIVE GLOBAL
+   ============================ */
+@media (max-width: 700px) {
+  .card-base {
+    padding: 1rem 0.5rem;
+  }
 }

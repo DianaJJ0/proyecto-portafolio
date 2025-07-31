@@ -1,12 +1,11 @@
 from django import forms
-from .models import Proyecto, ExperienciaLaboral, Estudio, Hobby
+from .models import Proyecto, ExperienciaLaboral, Estudio, Hobby, Habilidad, HabilidadBlanda
 
 # =========================
 # FORMULARIO: Contacto
-# =========================
 class ContactoForm(forms.Form):
     nombre = forms.CharField(
-        max_length=100, 
+        max_length=100,
         widget=forms.TextInput(attrs={'placeholder': 'Tu nombre completo','class': 'form-control'}),
         label='Nombre completo'
     )
@@ -26,7 +25,6 @@ class ContactoForm(forms.Form):
 
 # =========================
 # FORMULARIO: Proyecto
-# =========================
 class ProyectoForm(forms.ModelForm):
     class Meta:
         model = Proyecto
@@ -37,7 +35,6 @@ class ProyectoForm(forms.ModelForm):
 
 # =========================
 # FORMULARIO: Experiencia Laboral
-# =========================
 class ExperienciaLaboralForm(forms.ModelForm):
     class Meta:
         model = ExperienciaLaboral
@@ -49,7 +46,6 @@ class ExperienciaLaboralForm(forms.ModelForm):
 
 # =========================
 # FORMULARIO: Estudio
-# =========================
 class EstudioForm(forms.ModelForm):
     class Meta:
         model = Estudio
@@ -61,8 +57,26 @@ class EstudioForm(forms.ModelForm):
 
 # =========================
 # FORMULARIO: Hobby
-# =========================
 class HobbyForm(forms.ModelForm):
     class Meta:
         model = Hobby
         fields = ['nombre', 'descripcion']
+
+# =========================
+# FORMULARIO: Habilidad Técnica
+class HabilidadForm(forms.ModelForm):
+    class Meta:
+        model = Habilidad
+        fields = ['nombre', 'nivel']
+        widgets = {
+            'nivel': forms.Select(attrs={'class': 'form-control'}),
+        }
+
+# FORMULARIO: Habilidad Blanda
+class HabilidadBlandaForm(forms.ModelForm):
+    class Meta:
+        model = HabilidadBlanda
+        fields = ['nombre', 'icono']
+        widgets = {
+            'icono': forms.TextInput(attrs={'class': 'form-control'}),
+        }

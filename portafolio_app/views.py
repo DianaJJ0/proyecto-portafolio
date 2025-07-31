@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Proyecto, ExperienciaLaboral, Estudio, Hobby
-from .forms import ProyectoForm, ExperienciaLaboralForm, EstudioForm, HobbyForm, ContactoForm
+from .models import Proyecto, ExperienciaLaboral, Estudio, Hobby, Habilidad, HabilidadBlanda
+from .forms import ProyectoForm, ExperienciaLaboralForm, EstudioForm, HobbyForm, ContactoForm, HabilidadForm, HabilidadBlandaForm
 
 # =========================
 # VISTA: Página de inicio
@@ -26,9 +26,10 @@ def contacto(request):
     else:
         form = ContactoForm()
     return render(request, 'portafolio/contacto.html', {'form': form})
+
 # =========================
 # VISTAS CRUD: Proyecto
-# =========================
+
 def listaProyectos(request):
     """
     Lista todos los proyectos registrados en el portafolio.
@@ -69,6 +70,15 @@ def eliminar_proyecto(request, pk):
         proyecto.delete()
         return redirect('listaProyectos')
     return render(request, 'portafolio/confirmar_eliminar.html', {'objeto': proyecto, 'tipo': 'proyecto'})
+
+# =========================
+# VISTA: Proyectos destacados
+def proyectos_destacados(request):
+    """
+    Muestra la página de proyectos destacados.
+    """
+    proyectos = Proyecto.objects.all()
+    return render(request, 'portafolio/proyectos.html', {'proyectos': proyectos})
 
 # =========================
 # VISTAS CRUD: Experiencia Laboral
@@ -202,12 +212,74 @@ def eliminar_hobby(request, pk):
         return redirect('lista_hobbies')
     return render(request, 'portafolio/confirmar_eliminar.html', {'objeto': hobby, 'tipo': 'hobby'})
 
+# =========================
+# VISTAS CRUD: Habilidad Técnica
+
+# listar habilidades técnicas
+def lista_habilidades(request):
+    habilidades = Habilidad.objects.all()
+    return render(request, 'portafolio/lista_habilidades.html', {'habilidades': habilidades})
+
+# Crear habilidad técnica
+def crear_habilidad(request):
+    if request.method == 'POST':
+        form = HabilidadForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('lista_habilidades')
+    else:
+        form = HabilidadForm()
+    return render(request, 'portafolio/formulario_habilidad.html', {'form': form})
+
+# Editar habilidad técnica
+def editar_habilidad(request, pk):
+    habilidad = get_object_or_404(Habilidad, pk=pk)
+    form = HabilidadForm(request.POST or None, instance=habilidad)
+    if form.is_valid():
+        form.save()
+        return redirect('lista_habilidades')
+    return render(request, 'portafolio/formulario_habilidad.html', {'form': form})
+
+# Eliminar habilidad técnica
+def eliminar_habilidad(request, pk):
+    habilidad = get_object_or_404(Habilidad, pk=pk)
+    if request.method == 'POST':
+        habilidad.delete()
+        return redirect('lista_habilidades')
+    return render(request, 'portafolio/confirmar_eliminar.html', {'objeto': habilidad, 'tipo': 'habilidad'})
 
 # =========================
-# VISTA: Proyectos destacados
-def proyectos_destacados(request):
-    """
-    Muestra la página de proyectos destacados.
-    """
-    proyectos = Proyecto.objects.all()
-    return render(request, 'portafolio/proyectos.html', {'proyectos': proyectos})
+# VISTAS CRUD: Habilidad Blanda
+
+# listar habilidades blandas
+def lista_habilidades_blandas(request):
+    habilidades_blandas = HabilidadBlanda.objects.all()
+    return render(request, 'portafolio/lista_habilidades_blandas.html', {'habilidades_blandas': habilidades_blandas})
+
+# Crear habilidad blanda
+def crear_habilidad_blanda(request):
+    if request.method == 'POST':
+        form = HabilidadBlandaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('lista_habilidades_blandas')
+    else:
+        form = HabilidadBlandaForm()
+    return render(request, 'portafolio/formulario_habilidad_blanda.html', {'form': form})
+
+# Editar habilidad blanda
+def editar_habilidad_blanda(request, pk):
+    habilidad_blanda = get_object_or_404(HabilidadBlanda, pk=pk)
+    form = HabilidadBlandaForm(request.POST or None, instance=habilidad_blanda)
+    if form.is_valid():
+        form.save()
+        return redirect('lista_habilidades_blandas')
+    return render(request, 'portafolio/formulario_habilidad_blanda.html', {'form': form})
+
+# Eliminar habilidad blanda
+def eliminar_habilidad_blanda(request, pk):
+    habilidad_blanda = get_object_or_404(HabilidadBlanda, pk=pk)
+    if request.method == 'POST':
+        habilidad_blanda.delete()
+        return redirect('lista_habilidades_blandas')
+    return render(request, 'portafolio/confirmar_eliminar.html', {'objeto': habilidad_blanda, 'tipo': 'habilidad blanda'})

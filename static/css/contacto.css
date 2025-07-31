@@ -1,0 +1,49 @@
+/* ==============================
+   CONTACTO: Estilos específicos
+   ============================== */
+
+/* Tarjeta del formulario y la info de contacto */
+.contact-card .card-title {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.contact-card .card-subtitle {
+  color: #fff;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Botón principal en la página de contacto */
+.contact-page .btn-primary {
+  padding: 12px 30px;
+  font-weight: bold;
+  width: 100%;
+  max-width: 300px;
+}
+
+/* Tarjeta de información de contacto */
+.info-item {
+  margin-bottom: 1.5rem;
+}
+
+.info-item h5 {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #0095ff;
+}
+
+.info-item p {
+  margin: 0;
+  color: #fff;
+}
+
+/* Puedes agregar aquí estilos adicionales para contacto si los necesitas */
+/* Responsive para la tarjeta de contacto */
+@media (max-width: 700px) {
+  .contact-card {
+    padding: 1rem 0.5rem;
+    max-width: 99vw;
+  }
+}

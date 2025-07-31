@@ -1,0 +1,57 @@
+/* ==============================
+   HABILIDADES: Tarjetas y grilla
+   ============================== */
+.skills-section h2 {
+  margin-bottom: 1rem;
+}
+.skill-card {
+    padding: 1.5rem 1rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #1e1e1e;
+    border: 1px solid #444;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    transition: transform 0.4s, box-shadow 0.4s, border-color 0.4s;
+}
+.skill-card:hover {
+    transform: translateY(-8px);
+    border-color: #007bff;
+    box-shadow: 0 8px 25px rgba(0, 123, 255, 0.15);
+}
+.skill-card i, .skill-card svg {
+    font-size: 2.5rem;
+    color: #007bff;
+    fill: #007bff;
+    margin-bottom: 1rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: block;
+}
+.skill-card h5 {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #fff;
+    font-weight: bold;
+}
+.habilidad-nivel {
+    margin-top: 0.4rem;
+    font-size: 0.9rem;
+    color: #0dcaf0;
+    font-weight: 500;
+    display: block;
+}
+@media (max-width: 991px) {
+    .skill-card {
+        padding: 1rem 0.7rem;
+    }
+}
+@media (max-width: 700px) {
+    .skill-card {
+        padding: 0.7rem 0.3rem;
+        font-size: 0.95rem;
+    }
+}

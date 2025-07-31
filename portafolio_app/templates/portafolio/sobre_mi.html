@@ -8,48 +8,41 @@
     <section class="about-hero text-center mb-5">
         <h1 class="display-4 fw-bold gradient-text mb-3">Conoce acerca de mí</h1>
         <p class="lead mt-3 mx-auto wide-text">
-          ¡Hola! Soy Diana Jiménez, una apasionada Diseñadora Gráfica y futura Desarrolladora de Software, con un enfoque especial en crear experiencias de usuario (UX/UI) intuitivas y memorables.
-          Me encanta aprender y aplicar nuevas tecnologías para resolver problemas creativos.
+            ¡Hola! Soy Diana Jiménez, una apasionada Diseñadora Gráfica y futura Desarrolladora de Software, con un
+            enfoque especial en crear experiencias de usuario (UX/UI) intuitivas y memorables.
+            Me encanta aprender y aplicar nuevas tecnologías para resolver problemas creativos.
+            <br>
+            Además, cuento con habilidades blandas como el respeto, la disposición, trabajo en equipo, asertividad,
+            comunicación, liderazgo, ganas de aprender constantemente y disposición a retos.
+            Mi compromiso, actitud positiva y dedicación son siempre un aporte en cualquier equipo de trabajo.
         </p>
     </section>
-    <br><br>
+
     <!-- =========== SECCIÓN DE HABILIDADES =========== -->
     <section class="skills-section text-center mb-5">
         <h2 class="fw-bold">Habilidades</h2>
-        <p class="text-muted">Estas son algunas de las tecnologías y herramientas que manejo.</p>
-        
+        <p class="text-muted">Estas son algunas de las tecnologías, herramientas y habilidades personales que manejo.
+        </p>
+
         <div class="row mt-4 justify-content-center">
-            <!-- Ejemplo: Python con SVG -->
+            {% for habilidad in habilidades_tecnicas %}
             <div class="col-lg-2 col-md-4 col-6 mb-4">
                 <div class="card-base skill-card">
-                    <!-- Icono SVG de Python -->
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
-                        <!-- ... SVG Path ... -->
-                    </svg>
-                    <h5>Python</h5>
+                    {{ habilidad.icono|safe }}
+                    <h5>{{ habilidad.nombre }}</h5>
+                    <span class="habilidad-nivel text-info">Nivel: {{ habilidad.get_nivel_display }}</span>
                 </div>
             </div>
-            <!-- Otras habilidades con Bootstrap Icons -->
-            <div class="col-lg-2 col-md-4 col-6 mb-4"><div class="card-base skill-card"><i class="bi bi-code-slash"></i><h5>Django</h5></div></div>
-            <div class="col-lg-2 col-md-4 col-6 mb-4"><div class="card-base skill-card"><i class="bi bi-node-plus-fill"></i><h5>Node.js</h5></div></div>
-            <div class="col-lg-2 col-md-4 col-6 mb-4"><div class="card-base skill-card"><i class="bi bi-filetype-html"></i><h5>HTML5</h5></div></div>
-            <div class="col-lg-2 col-md-4 col-6 mb-4"><div class="card-base skill-card"><i class="bi bi-filetype-css"></i><h5>CSS3</h5></div></div>
-            <div class="col-lg-2 col-md-4 col-6 mb-4"><div class="card-base skill-card"><i class="bi bi-filetype-js"></i><h5>JavaScript</h5></div></div>
-            <div class="col-lg-2 col-md-4 col-6 mb-4"><div class="card-base skill-card"><i class="bi bi-database-fill-gear"></i><h5>Bases de Datos</h5></div></div>
-            <div class="col-lg-2 col-md-4 col-6 mb-4"><div class="card-base skill-card"><i class="bi bi-hdd-stack-fill"></i><h5>MongoDB</h5></div></div>
-            <div class="col-lg-2 col-md-4 col-6 mb-4"><div class="card-base skill-card"><i class="bi bi-git"></i><h5>Git</h5></div></div>
+            {% endfor %}
+            {% for habilidad in habilidades_blandas %}
             <div class="col-lg-2 col-md-4 col-6 mb-4">
                 <div class="card-base skill-card">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
-                        <!-- ... SVG Path ... -->
-                    </svg>
-                    <h5>Figma</h5>
+                    {{ habilidad.icono|safe }}
+                    <h5>{{ habilidad.nombre }}</h5>
+                    {# Las blandas NO muestran nivel #}
                 </div>
             </div>
-            <div class="col-lg-2 col-md-4 col-6 mb-4"><div class="card-base skill-card"><i class="bi bi-palette-fill"></i><h5>Teoría del Color</h5></div></div>
-            <div class="col-lg-2 col-md-4 col-6 mb-4"><div class="card-base skill-card"><i class="bi bi-vector-pen"></i><h5>Diseño Vectorial</h5></div></div>
-            <div class="col-lg-2 col-md-4 col-6 mb-4"><div class="card-base skill-card"><i class="bi bi-image-fill"></i><h5>Edición de Imagen</h5></div></div>
-            <div class="col-lg-2 col-md-4 col-6 mb-4"><div class="card-base skill-card"><i class="bi bi-lightbulb-fill"></i><h5>Branding</h5></div></div>
+            {% endfor %}
         </div>
     </section>
 </div>
