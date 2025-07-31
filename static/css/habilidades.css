@@ -2,7 +2,7 @@
    CONTENEDOR CENTRAL CON MÁRGENES
    ============================ */
 .container-custom {
-    max-width: 1400px;
+    max-width: 1500px;
     margin: 0 auto;
     padding-left: 40px;
     padding-right: 40px;
@@ -37,15 +37,20 @@
     padding-right: 2.5rem;
     border-right: 2px solid #0dcaf0;
 }
+/* ============================
+   FOTO DE PERFIL MÁS GRANDE
+   ============================ */
+
 .profile-photo-lg {
-    width: 200px;
-    height: 200px;
+    width: 280px;
+    height: 280px;
     object-fit: cover;
     border-radius: 50%;
     border: 3px solid #0dcaf0;
     box-shadow: 0 8px 32px rgba(13, 202, 240, 0.22);
     background: #181818;
 }
+
 .profile-info-container {
     flex: 1;
     min-width: 0;
@@ -105,7 +110,7 @@
     background: rgba(22, 23, 43, 0.582);
     border: 2px solid #0dcaf0;
     border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(13,202,240,0.11), 0 1.5px 12px rgba(0,0,0,0.28);
+    box-shadow: 0 8px 32px rgba(52, 153, 221, 0.11), 0 1.5px 12px rgba(0,0,0,0.28);
     backdrop-filter: blur(1.5px);
     position: relative;
     display: flex;
@@ -116,7 +121,7 @@
 .modern-skill-card:hover {
     transform: translateY(-10px) scale(1.04);
     border-color: #fff;
-    box-shadow: 0 12px 40px rgba(13,202,240,0.13), 0 4px 18px rgba(0,0,0,0.38);
+    box-shadow: 0 12px 40px rgba(13, 138, 240, 0.13), 0 4px 18px rgba(0,0,0,0.38);
 }
 .skill-card-equal {
     width: 192px;

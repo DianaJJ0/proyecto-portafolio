@@ -12,11 +12,7 @@ body {
     display: flex;
     flex-direction: column;
     height: 100vh;
-    color: #fff; /* Color de texto blanco por defecto para todo el sitio */
-}
-
-main {
-    flex: 1 0 auto; /* El contenido principal ocupa el espacio restante */
+    color: #fff;
 }
 
 /* --- Tipografía global: todas las tipografías en blanco --- */
@@ -30,12 +26,26 @@ body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, label, span, a, .lead {
 }
 
 /* ============================
-   COMPONENTES REUTILIZABLES
+   ENCABEZADO FIJO Y TRANSPARENTE
    ============================ */
-
-/* --- Barra de Navegación --- */
 .header-nav {
-  border-bottom: 1px solid #333;
+    position: fixed;                     /* Fijo arriba SIEMPRE */
+    top: 0;
+    left: 0;
+    width: 100%;                        /* Usa 100% para evitar scroll horizontal */
+    z-index: 99999;                     /* Más alto que todo */
+    background: rgba(24, 24, 24, 0.96); /* Menos transparente, más visible */
+    box-shadow: 0 2px 18px rgba(0,0,0,0.18);
+    backdrop-filter: blur(9px);
+    -webkit-backdrop-filter: blur(9px);
+    border-bottom: 2px solid #0dcaf0;   /* Borde cian visible para pruebas */
+    transition: background 0.25s, backdrop-filter 0.22s;
+}
+
+/* Ajusta el padding del main para que el header no tape el contenido */
+main {
+    flex: 1 0 auto;
+    padding-top: 90px; 
 }
 
 .header-nav .nav-link {
@@ -166,5 +176,3 @@ select::placeholder {
     padding: 1rem 0.5rem;
   }
 }
-
-
