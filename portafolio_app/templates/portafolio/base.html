@@ -22,15 +22,25 @@
     <header class="header-nav py-2">
         <div class="container-fluid">
             <nav class="nav justify-content-center flex-wrap gap-2">
-            <a class="nav-link px-3" href="{% url 'sobre_mi' %}">Sobre mí</a>
-            <a class="nav-link px-3" href="{% url 'listaProyectos' %}">Proyectos</a>
-            <a class="nav-link px-3" href="{% url 'lista_experiencia' %}">Experiencia</a>
-            <a class="nav-link px-3" href="{% url 'lista_estudios' %}">Estudios</a>
-            <a class="nav-link px-3" href="{% url 'lista_hobbies' %}">Hobbies</a>
-            <a class="nav-link px-3" href="{% url 'contacto' %}">Contacto</a>
+                <a class="nav-link px-3" href="{% url 'sobre_mi' %}">Sobre mí</a>
+                <a class="nav-link px-3" href="{% url 'lista_proyectos' %}">Proyectos</a>
+                <a class="nav-link px-3" href="{% url 'lista_experiencia' %}">Experiencia</a>
+                <a class="nav-link px-3" href="{% url 'lista_estudios' %}">Estudios</a>
+                <a class="nav-link px-3" href="{% url 'lista_hobbies' %}">Hobbies</a>
+                <a class="nav-link px-3" href="{% url 'contacto' %}">Contacto</a>
+                <!-- Login/logout dinámico -->
+                <span style="margin-left:auto; display:flex; align-items:center;">
+                    {% if user.is_authenticated %}
+                    <span style="color:#0dcaf0; margin-right:12px;">{{ user.username }}</span>
+                    <a class="nav-link px-3" href="{% url 'logout' %}">Cerrar sesión</a>
+                    {% else %}
+                    <a class="nav-link px-3" href="{% url 'login' %}">Iniciar sesión</a>
+                    {% endif %}
+                </span>
             </nav>
         </div>
     </header>
+    ...
 
     <!-- Contenido principal de la página -->
     <main class="flex-shrink-0">

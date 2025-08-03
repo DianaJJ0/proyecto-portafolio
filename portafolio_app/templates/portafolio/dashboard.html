@@ -1,0 +1,27 @@
+{% extends 'portafolio/base.html' %}
+
+{% block contenido %}
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card-base">
+        <div class="card-body">
+          <h2 class="card-title text-center">Panel de control</h2>
+          <p class="text-center">Bienvenido, {{ user.username }}!</p>
+          <p class="text-center"><a href="{% url 'logout' %}" class="btn btn-secondary">Cerrar sesión</a></p>
+
+          <h3 class="mt-4">Acceso rápido a las secciones:</h3>
+          <ul class="list-group">
+            <li class="list-group-item"><a href="{% url 'listaProyectos' %}">Proyectos</a></li>
+            <li class="list-group-item"><a href="{% url 'lista_experiencia' %}">Experiencia Laboral</a></li>
+            <li class="list-group-item"><a href="{% url 'lista_estudios' %}">Estudios</a></li>
+            <li class="list-group-item"><a href="{% url 'lista_hobbies' %}">Hobbies</a></li>
+            <li class="list-group-item"><a href="{% url 'lista_habilidades' %}">Habilidades Técnicas</a></li>
+            <li class="list-group-item"><a href="{% url 'lista_habilidades_blandas' %}">Habilidades Blandas</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

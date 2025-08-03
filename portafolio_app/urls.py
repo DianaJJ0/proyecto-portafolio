@@ -2,7 +2,7 @@
 # Carpeta: proyecto-portafolio/portafolio_app/
 
 from django.urls import path
-from portafolio_app import views  # Importa las vistas definidas en portafolio_app/views.py
+from portafolio_app import views
 
 urlpatterns = [
     # Página "Sobre mí"
@@ -12,7 +12,7 @@ urlpatterns = [
     path('contacto/', views.contacto, name='contacto'),
 
     # Proyectos CRUD
-    path('proyectos/', views.listaProyectos, name='listaProyectos'),
+    path('proyectos/', views.lista_proyectos, name='lista_proyectos'),
     path('proyectos/crear/', views.crear_proyecto, name='crear_proyecto'),
     path('proyectos/editar/<int:pk>/', views.editar_proyecto, name='editar_proyecto'),
     path('proyectos/eliminar/<int:pk>/', views.eliminar_proyecto, name='eliminar_proyecto'),
@@ -46,7 +46,12 @@ urlpatterns = [
     path('habilidades-blandas/crear/', views.crear_habilidad_blanda, name='crear_habilidad_blanda'),
     path('habilidades-blandas/editar/<int:pk>/', views.editar_habilidad_blanda, name='editar_habilidad_blanda'),
     path('habilidades-blandas/eliminar/<int:pk>/', views.eliminar_habilidad_blanda, name='eliminar_habilidad_blanda'),
+
+    # Login / Logout
+    path('login/', views.login_view, name='login'),
+    path('logout/', views.logout_view, name='logout'),
 ]
+
 # Comentarios clave:
 # - Cada ruta está conectada directamente a una función en portafolio_app/views.py.
 

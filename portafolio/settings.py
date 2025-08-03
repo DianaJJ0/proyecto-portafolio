@@ -40,6 +40,11 @@ INSTALLED_APPS = [
     'portafolio_app',
 ]
 
+# Agrega estas líneas al final del archivo
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'sobre_mi'  # Redirige al index después del login
+LOGOUT_REDIRECT_URL = 'login'  # Redirige al login después del logout
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

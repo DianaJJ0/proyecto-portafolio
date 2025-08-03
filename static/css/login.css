@@ -1,0 +1,96 @@
+/* ==============================
+   Estilos exclusivos para login
+   ============================== */
+
+/* Fondo del login: centrado y con degradado */
+.login-outer {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #181818 70%, #003cffd0 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Tarjeta del formulario */
+.login-box {
+    background: #202328;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(13, 202, 240, 0.22), 0 2px 14px #0dcaf066;
+    padding: 2.5rem 2.5rem 2rem 2.5rem;
+    max-width: 400px;
+    width: 100%;
+}
+
+/* Título del login */
+.login-title {
+    color: #0dcaf0;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+/* Logo arriba del formulario */
+.login-logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.2rem;
+}
+.login-logo img {
+    width: 75px;
+    border-radius: 50%;
+    box-shadow: 0 2px 12px #0dcaf055;
+    border: 2px solid #f0c60d;
+}
+
+/* Etiquetas de los campos */
+.form-label {
+    color: #0dcaf0;
+    font-weight: 500;
+}
+
+/* Campos de texto del formulario */
+.form-control {
+    background: #232838;
+    color: #fff;
+    border: 1.5px solid #0dcaf0;
+    border-radius: 8px;
+}
+.form-control:focus {
+    border-color: #00baff;
+    box-shadow: 0 0 0 2px #0dcaf022;
+}
+
+/* Botón de ingresar */
+.btn-login {
+    background: #0dcaf0;
+    color: #232838;
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 10px 0;
+    width: 100%;
+    font-size: 1.1rem;
+    transition: background 0.2s;
+    margin-top: 1rem;
+}
+.btn-login:hover {
+    background: #00baff;
+    color: #fff;
+}
+
+/* Mensaje de error */
+.login-error {
+    color: #ff4a4a;
+    margin: 1rem 0 0.6rem 0;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* Enlace para volver */
+.login-back {
+    color: #0dcaf0;
+    display: block;
+    text-align: center;
+    margin-top: 1.3rem;
+    text-decoration: underline;
+}

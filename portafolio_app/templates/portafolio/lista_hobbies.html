@@ -2,6 +2,8 @@
 {% load static %}
 {% block contenido %}
 
+<!-- Solo muestra el botón flotante CRUD si el usuario está autenticado -->
+{% if user.is_authenticated %}
 <div class="fab-options-row">
     <div class="menu-container">
         <button class="card-options-btn" title="Opciones" type="button">
@@ -12,12 +14,15 @@
         </div>
     </div>
 </div>
+{% endif %}
 
 <div class="hobbies-container">
     <h1 class="display-4 fw-bold gradient-text text-center mb-5">Hobbies y Pasatiempos</h1>
     <div class="card-list-grid">
         {% for hobby in hobbies %}
         <div class="card-custom">
+            <!-- Solo muestra el CRUD en cada tarjeta si el usuario está autenticado -->
+            {% if user.is_authenticated %}
             <div class="menu-container">
                 <button class="card-options-btn" title="Opciones" type="button">
                     <i class="bi bi-three-dots-vertical"></i>
@@ -27,6 +32,7 @@
                     <a href="{% url 'eliminar_hobby' hobby.id %}" class="menu-link-blue">Eliminar</a>
                 </div>
             </div>
+            {% endif %}
             <div class="card-title-main">{{ hobby.nombre }}</div>
             <div class="card-description">
                 {% if hobby.descripcion %}{{ hobby.descripcion }}{% endif %}

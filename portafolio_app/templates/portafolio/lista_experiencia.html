@@ -2,9 +2,8 @@
 {% load static %}
 {% block contenido %}
 
-<!--
-    Botón de 3 punticos (flotante, esquina superior derecha)
-    para crear nueva experiencia.-->
+<!-- Solo muestra el botón flotante CRUD si el usuario está autenticado -->
+{% if user.is_authenticated %}
 <div class="fab-options-row">
     <div class="menu-container">
         <button class="card-options-btn" title="Opciones" type="button">
@@ -15,12 +14,15 @@
         </div>
     </div>
 </div>
+{% endif %}
 
 <div class="container experiencia-contenedor">
     <h1 class="display-4 fw-bold gradient-text text-center mt-5 mb-5">Experiencia Laboral</h1>
     <div class="card-list-grid">
         {% for exp in experiencia %}
         <div class="card-custom">
+            <!-- Solo muestra el CRUD en cada tarjeta si el usuario está autenticado -->
+            {% if user.is_authenticated %}
             <div class="menu-container">
                 <button class="card-options-btn" title="Opciones" type="button">
                     <i class="bi bi-three-dots-vertical"></i>
@@ -30,6 +32,7 @@
                     <a href="{% url 'eliminar_experiencia' exp.id %}" class="menu-link-blue">Eliminar</a>
                 </div>
             </div>
+            {% endif %}
             <div class="card-title-main">{{ exp.puesto }}</div>
             <div class="card-title-secondary">{{ exp.empresa }}</div>
             <div class="card-dates">

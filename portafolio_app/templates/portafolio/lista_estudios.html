@@ -2,6 +2,8 @@
 {% load static %}
 {% block contenido %}
 
+{# SOLO muestra el botón flotante CRUD si el usuario ha iniciado sesión #}
+{% if user.is_authenticated %}
 <div class="fab-options-row">
     <div class="menu-container">
         <button class="card-options-btn" title="Opciones" type="button">
@@ -12,12 +14,16 @@
         </div>
     </div>
 </div>
+{% endif %}
 
 <div class="estudios-container">
     <h1 class="display-4 fw-bold gradient-text text-center mb-5">Estudios</h1>
     <div class="card-list-grid">
+        {# Bucle de estudios. Las tarjetas siempre se muestran, pero el CRUD solo para usuarios autenticados #}
         {% for estudio in estudios %}
         <div class="card-custom">
+            {# SOLO muestra el CRUD en cada tarjeta si el usuario está autenticado #}
+            {% if user.is_authenticated %}
             <div class="menu-container">
                 <button class="card-options-btn" title="Opciones" type="button">
                     <i class="bi bi-three-dots-vertical"></i>
@@ -27,6 +33,7 @@
                     <a href="{% url 'eliminar_estudio' estudio.id %}" class="menu-link-blue">Eliminar</a>
                 </div>
             </div>
+            {% endif %}
             <div class="card-title-main">{{ estudio.titulo_obtenido }}</div>
             <div class="card-title-secondary">{{ estudio.institucion }}</div>
             <div class="card-dates">

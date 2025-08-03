@@ -1,10 +1,40 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib import messages  # Importa messages para feedback
+from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from .models import Proyecto, ExperienciaLaboral, Estudio, Hobby, Habilidad, HabilidadBlanda, Contacto
 from .forms import HabilidadBlandaForm, HabilidadForm, ProyectoForm, ExperienciaLaboralForm, EstudioForm, HobbyForm, ContactoForm
 
 # =========================
-# VISTA: Sobre mí (habilidades técnicas y blandas desde la BD)
+# VISTA: Login
+def login_view(request):
+    """
+    Vista para iniciar sesión.
+    """
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('sobre_mi')
+        else:
+            return render(request, 'portafolio/login.html', {'error': 'Usuario o contraseña incorrectos'})
+    return render(request, 'portafolio/login.html')
+
+
+# =========================
+# VISTA: Logout
+def logout_view(request):
+    """
+    Vista para cerrar sesión.
+    """
+    logout(request)
+    return redirect('login')
+
+
+# =========================
+# VISTA: Sobre mí (pública)
 def sobre_mi(request):
     habilidades_tecnicas = Habilidad.objects.all()
     habilidades_blandas = HabilidadBlanda.objects.all()
@@ -19,27 +49,30 @@ def contacto(request):
     if request.method == 'POST':
         form = ContactoForm(request.POST)
         if form.is_valid():
-            pass
+            form.save()
+            messages.success(request, "¡Tu mensaje ha sido enviado exitosamente!")
+            return redirect('contacto')
     else:
         form = ContactoForm()
     return render(request, 'portafolio/contacto.html', {'form': form})
 
+
+# ===============================================================================================
+# CRUD: PROTEGER LAS VISTAS CRUD CON @login_required para que solo usuarios autenticados
+# puedan acceder a ellas y modificarlas, y redirigir a la página de inicio de sesión si no están autenticados.
+# ===============================================================================================
+
 # =========================
-# VISTAS CRUD: Proyecto
+# VISTAS CRUD: Proyectos
 
 # listar proyectos
-def listaProyectos(request):
-    """
-    Lista todos los proyectos registrados en el portafolio.
-    """
+def lista_proyectos(request):
     proyectos = Proyecto.objects.all()
     return render(request, 'portafolio/lista_proyectos.html', {'proyectos': proyectos})
 
 # crear proyecto
+@login_required
 def crear_proyecto(request):
-    """
-    Formulario para crear un nuevo proyecto.
-    """
     if request.method == 'POST':
         form = ProyectoForm(request.POST)
         if form.is_valid():
@@ -50,10 +83,8 @@ def crear_proyecto(request):
     return render(request, 'portafolio/formulario.html', {'form': form})
 
 # editar proyecto
+@login_required
 def editar_proyecto(request, pk):
-    """
-    Formulario para editar un proyecto existente.
-    """
     proyecto = get_object_or_404(Proyecto, pk=pk)
     form = ProyectoForm(request.POST or None, instance=proyecto)
     if form.is_valid():
@@ -62,10 +93,8 @@ def editar_proyecto(request, pk):
     return render(request, 'portafolio/formulario.html', {'form': form})
 
 # eliminar proyecto
+@login_required
 def eliminar_proyecto(request, pk):
-    """
-    Vista para confirmar y eliminar un proyecto.
-    """
     proyecto = get_object_or_404(Proyecto, pk=pk)
     if request.method == 'POST':
         proyecto.delete()
@@ -73,32 +102,18 @@ def eliminar_proyecto(request, pk):
     return render(request, 'portafolio/confirmar_eliminar.html', {'objeto': proyecto, 'tipo': 'proyecto'})
 
 
-# =========================
-# VISTA: Proyectos destacados
-def proyectos_destacados(request):
-    """
-    Muestra la página de proyectos destacados.
-    """
-    proyectos = Proyecto.objects.all()
-    return render(request, 'portafolio/proyectos.html', {'proyectos': proyectos})
-
 
 # =========================
 # VISTAS CRUD: Experiencia Laboral
 
-#listar experiencia laboral
+# listar experiencia laboral
 def lista_experiencia(request):
-    """
-    Lista todas las experiencias laborales registradas.
-    """
     experiencia = ExperienciaLaboral.objects.all()
     return render(request, 'portafolio/lista_experiencia.html', {'experiencia': experiencia})
 
 # crear experiencia
+@login_required
 def crear_experiencia(request):
-    """
-    Formulario para agregar una nueva experiencia laboral.
-    """
     if request.method == 'POST':
         form = ExperienciaLaboralForm(request.POST)
         if form.is_valid():
@@ -109,6 +124,7 @@ def crear_experiencia(request):
     return render(request, 'portafolio/formulario_experiencia.html', {'form': form})
 
 # editar experiencia
+@login_required
 def editar_experiencia(request, pk):
     """
     Formulario para editar una experiencia laboral existente.
@@ -121,6 +137,7 @@ def editar_experiencia(request, pk):
     return render(request, 'portafolio/formulario_experiencia.html', {'form': form})
 
 # eliminar experiencia
+@login_required
 def eliminar_experiencia(request, pk):
     """
     Vista para confirmar y eliminar una experiencia laboral.
@@ -130,6 +147,17 @@ def eliminar_experiencia(request, pk):
         exp.delete()
         return redirect('lista_experiencia')
     return render(request, 'portafolio/confirmar_eliminar.html', {'objeto': exp, 'tipo': 'experiencia'})
+
+
+# =========================
+# VISTA: Proyectos destacados
+@login_required
+def proyectos_destacados(request):
+    """
+    Muestra la página de proyectos destacados.
+    """
+    proyectos = Proyecto.objects.all()
+    return render(request, 'portafolio/proyectos.html', {'proyectos': proyectos})
 
 
 # =========================
@@ -144,6 +172,7 @@ def lista_estudios(request):
     return render(request, 'portafolio/lista_estudios.html', {'estudios': estudios})
 
 # crear estudio
+@login_required
 def crear_estudio(request):
     """
     Formulario para agregar un nuevo estudio.
@@ -158,6 +187,7 @@ def crear_estudio(request):
     return render(request, 'portafolio/formulario_estudio.html', {'form': form})
 
 # editar estudio
+@login_required
 def editar_estudio(request, pk):
     """
     Formulario para editar un estudio existente.
@@ -170,6 +200,7 @@ def editar_estudio(request, pk):
     return render(request, 'portafolio/formulario_estudio.html', {'form': form})
 
 # eliminar estudio
+@login_required
 def eliminar_estudio(request, pk):
     """
     Vista para confirmar y eliminar un estudio.
@@ -179,6 +210,7 @@ def eliminar_estudio(request, pk):
         estudio.delete()
         return redirect('lista_estudios')
     return render(request, 'portafolio/confirmar_eliminar.html', {'objeto': estudio, 'tipo': 'estudio'})
+
 
 # =========================
 # VISTAS CRUD: Hobbies
@@ -192,6 +224,7 @@ def lista_hobbies(request):
     return render(request, 'portafolio/lista_hobbies.html', {'hobbies': hobbies})
 
 # crear hobby
+@login_required
 def crear_hobby(request):
     """
     Formulario para agregar un nuevo hobby.
@@ -206,6 +239,7 @@ def crear_hobby(request):
     return render(request, 'portafolio/formulario_hobby.html', {'form': form})
 
 # editar hobby
+@login_required
 def editar_hobby(request, pk):
     """
     Formulario para editar un hobby existente.
@@ -218,6 +252,7 @@ def editar_hobby(request, pk):
     return render(request, 'portafolio/formulario_hobby.html', {'form': form})
 
 # eliminar hobby
+@login_required
 def eliminar_hobby(request, pk):
     """
     Vista para confirmar y eliminar un hobby.
@@ -228,6 +263,7 @@ def eliminar_hobby(request, pk):
         return redirect('lista_hobbies')
     return render(request, 'portafolio/confirmar_eliminar.html', {'objeto': hobby, 'tipo': 'hobby'})
 
+
 # =========================
 # VISTAS CRUD: Habilidad Técnica
 
@@ -237,6 +273,7 @@ def lista_habilidades(request):
     return render(request, 'portafolio/lista_habilidades.html', {'habilidades': habilidades})
 
 # Crear habilidad técnica
+@login_required
 def crear_habilidad(request):
     if request.method == 'POST':
         form = HabilidadForm(request.POST)
@@ -248,6 +285,7 @@ def crear_habilidad(request):
     return render(request, 'portafolio/formulario_habilidad.html', {'form': form})
 
 # Editar habilidad técnica
+@login_required
 def editar_habilidad(request, pk):
     habilidad = get_object_or_404(Habilidad, pk=pk)
     form = HabilidadForm(request.POST or None, instance=habilidad)
@@ -257,12 +295,14 @@ def editar_habilidad(request, pk):
     return render(request, 'portafolio/formulario_habilidad.html', {'form': form})
 
 # Eliminar habilidad técnica
+@login_required
 def eliminar_habilidad(request, pk):
     habilidad = get_object_or_404(Habilidad, pk=pk)
     if request.method == 'POST':
         habilidad.delete()
         return redirect('lista_habilidades')
     return render(request, 'portafolio/confirmar_eliminar.html', {'objeto': habilidad, 'tipo': 'habilidad'})
+
 
 # =========================
 # VISTAS CRUD: Habilidad Blanda
@@ -273,6 +313,7 @@ def lista_habilidades_blandas(request):
     return render(request, 'portafolio/lista_habilidades_blandas.html', {'habilidades_blandas': habilidades_blandas})
 
 # Crear habilidad blanda
+@login_required
 def crear_habilidad_blanda(request):
     if request.method == 'POST':
         form = HabilidadBlandaForm(request.POST)
@@ -284,6 +325,7 @@ def crear_habilidad_blanda(request):
     return render(request, 'portafolio/formulario_habilidad_blanda.html', {'form': form})
 
 # Editar habilidad blanda
+@login_required
 def editar_habilidad_blanda(request, pk):
     habilidad_blanda = get_object_or_404(HabilidadBlanda, pk=pk)
     form = HabilidadBlandaForm(request.POST or None, instance=habilidad_blanda)
@@ -293,24 +335,10 @@ def editar_habilidad_blanda(request, pk):
     return render(request, 'portafolio/formulario_habilidad_blanda.html', {'form': form})
 
 # Eliminar habilidad blanda
+@login_required
 def eliminar_habilidad_blanda(request, pk):
     habilidad_blanda = get_object_or_404(HabilidadBlanda, pk=pk)
     if request.method == 'POST':
         habilidad_blanda.delete()
         return redirect('lista_habilidades_blandas')
     return render(request, 'portafolio/confirmar_eliminar.html', {'objeto': habilidad_blanda, 'tipo': 'habilidad blanda'})
-
-
-
-# =========================
-# VISTA: Contacto
-def contacto(request):
-    if request.method == 'POST':
-        form = ContactoForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, "¡Tu mensaje ha sido enviado exitosamente!")
-            return redirect('contacto')
-    else:
-        form = ContactoForm()
-    return render(request, 'portafolio/contacto.html', {'form': form})
